@@ -1,0 +1,95 @@
+{{ define "main" }}
+<main class="max-w-7xl mx-auto px-6 py-24 space-y-24">
+    
+    {{ $all_people := sort .Pages "Weight" }}
+    
+    {{/* Grouping Logic */}}
+    {{ $leadership := where $all_people "Params.category" "leadership" }}
+    {{ $postdocs := where $all_people "Params.category" "postdoc" }}
+    {{ $phds := where $all_people "Params.category" "phd" }}
+    {{ $ras := where $all_people "Params.category" "ra" }}
+    {{ $bsms := where $all_people "Params.category" "bsms" }}
+
+
+
+    {{/* --- SECTION: LEADERSHIP --- */}}
+    {{ with $leadership }}
+    <section class="reveal">
+        {{ range . }}
+            {{ partial "ui/person-card.html" (dict "page" . "style" "leadership") }}
+        {{ end }}
+    </section>
+    {{ end }}
+
+    {{/* --- SECTION: POSTDOCS --- */}}
+    {{ with $postdocs }}
+    <section class="reveal">
+        <div class="flex items-end justify-between mb-8">
+            <h3 class="font-title text-4xl text-lab-text">Postdoctoral Fellows</h3>
+            <span class="h-px bg-lab-border grow ml-8"></span>
+        </div>
+        {{/* Using vertical style for postdocs now */}}
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {{ range . }}
+                {{ partial "ui/person-card.html" (dict "page" . "style" "vertical") }}
+            {{ end }}
+        </div>
+    </section>
+    {{ end }}
+
+    {{/* --- SECTION: PHD CANDIDATES --- */}}
+    {{ with $phds }}
+    <section class="reveal">
+        <div class="flex items-end justify-between mb-8">
+            <h3 class="font-title text-4xl text-lab-text">PhD Scholars</h3>
+            <span class="h-px bg-lab-border grow ml-8"></span>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {{ range . }}
+                {{ partial "ui/person-card.html" (dict "page" . "style" "vertical") }}
+            {{ end }}
+        </div>
+    </section>
+    {{ end }}
+
+    {{/* --- SECTION: RESEARCH ASSISTANTS --- */}}
+    {{ with $ras }}
+    <section class="reveal">
+        <div class="flex items-end justify-between mb-8">
+            <h3 class="font-title text-4xl text-lab-text">Research Assistants</h3>
+            <span class="h-px bg-lab-border grow ml-8"></span>
+        </div>
+        {{/* Changed grid to accommodate vertical cards */}}
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {{ range . }}
+                {{ partial "ui/person-card.html" (dict "page" . "style" "vertical") }}
+            {{ end }}
+        </div>
+    </section>
+    {{ end }}
+
+    {{/* --- SECTION: BS-MS STUDENTS --- */}}
+    {{ with $bsms }}
+    <section class="reveal">
+        <div class="flex items-end justify-between mb-8">
+            <h3 class="font-title text-4xl text-lab-text">BS-MS Students</h3>
+            <span class="h-px bg-lab-border grow ml-8"></span>
+        </div>
+        {{/* 4 columns for undergrads as they might have less text, but still same vertical card */}}
+        <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            {{ range . }}
+                {{ partial "ui/person-card.html" (dict "page" . "style" "vertical") }}
+            {{ end }}
+        </div>
+    </section>
+    {{ end }}
+
+
+    <div class="text-center pt-12 border-t border-lab-border">
+        <a href="{{ "alumni" | relURL }}" class="inline-block border-b border-lab-border text-xs font-bold text-lab-muted hover:text-lab-accent hover:border-lab-accent transition-colors uppercase tracking-widest pb-1">
+            View Alumni Archive
+        </a>
+    </div>
+
+</main>
+{{ end }}

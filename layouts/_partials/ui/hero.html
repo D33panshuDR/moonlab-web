@@ -1,0 +1,44 @@
+{{ $data := site.Data.home.header }}
+
+<header class="relative min-h-[90vh] flex items-center pt-20">
+    
+    <div class="absolute inset-0 z-0  bg-[linear-gradient(to_right,#e5e7eb_1px,transparent_1px),linear-gradient(to_bottom,#e5e7eb_1px,transparent_1px)] bg-tech-grid opacity-60"></div>
+    
+    {{/* Main Container: Changed from Grid to Flex/Centered Block */}}
+    <div class="relative z-10 max-w-7xl mx-auto px-6 w-full flex flex- justify-center items-center py-16">
+        
+        {{/* Text Wrapper: Added max-w-4xl to keep line lengths readable */}}
+        <div class="reveal max-w-4xl ">
+            
+            {{/* Tagline */}}
+            <div class="inline-block border border-lab-border px-3 py-1 mb-8 bg-white shadow-sm">
+                <span class="text-[10px] tracking-[0.25em] font-bold text-lab-accent uppercase">
+                    {{ $data.tagline }}
+                </span>
+            </div>
+
+            {{/* Heading: Adjusted size slightly for text-only layout */}}
+            <h1 class="font-title text-7xl md:text-9xl leading-[0.85] mb-10 text-lab-text">
+                {{ $data.heading.line1 }} <br>
+                <span class="text-lab-muted text-7xl leading-[0.85]  ">{{ $data.heading.line2 }}</span>
+            </h1>
+
+            {{/* Description: Increased text size slightly since it's now the main focus */}}
+            <p class="text-lab-muted text-base md:text-lg leading-relaxed mb-12 border-l-2 border-lab-accent pl-8 max-w-2xl">
+                {{ $data.description }}
+            </p>
+
+            {{/* Buttons */}}
+            <div class="flex flex-wrap gap-8 items-center">
+                <a href="{{ $data.buttons.primary.url }}" class="px-8 py-4 bg-lab-text text-white text-xs font-bold tracking-widest hover:bg-lab-accent transition-colors shadow-lg">
+                    {{ $data.buttons.primary.text }}
+                </a>
+                <a href="{{ $data.buttons.secondary.url }}" class="group text-sm font-medium text-lab-muted hover:text-lab-text transition-colors flex items-center gap-2">
+                    {{ $data.buttons.secondary.text }} 
+                    <span class="group-hover:translate-x-1 transition-transform">&rarr;</span>
+                </a>
+            </div>
+
+        </div>
+    </div>
+</header>

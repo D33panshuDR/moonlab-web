@@ -1,0 +1,124 @@
+{{ $data := site.Data.nav }}
+
+<nav class="fixed w-full z-50 transition-all duration-300 bg-lab-surface/80 backdrop-blur-md border-b border-lab-border/40" id="navbar">
+    <div class="max-w-7xl mx-auto px-6 py-4">
+        <div class="flex justify-between items-center">
+
+            <a href="{{ .Site.BaseURL }}" class="flex items-center gap-3 group z-50 relative">
+                <div class=" flex items-center justify-center font-title text-xl">
+                    <img src="{{ .Site.Params.logo | relURL }}" alt="{{ .Site.Title }} Logo" class="h-14 w-auto">
+                </div>
+            </a>
+            <div class="hidden md:flex items-center gap-8 text-xs font-medium tracking-wide">
+                {{ range $data.menu }}
+                    {{ if .children }}
+                        <div class="relative group h-full py-2">
+                            <button class="flex items-center gap-1 hover:text-lab-accent transition-colors focus:outline-none">
+                                {{ .name }}
+                                <svg class="w-3 h-3 opacity-60 group-hover:rotate-180 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                            </button>
+                            
+                            {{/* Dropdown Content */}}
+                            <div class="absolute left-1/2 -translate-x-1/2 pt-4 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 ease-out">
+                                <div class="bg-white/95 backdrop-blur-sm border border-lab-border/20 shadow-xl rounded-sm overflow-hidden min-w-40 flex flex-col">
+                                    {{ range .children }}
+                                        <a href="{{ .url }}" class="px-5 py-3 text-lab-text hover:bg-lab-surface hover:text-lab-accent transition-colors whitespace-nowrap text-left">
+                                            {{ .name }}
+                                        </a>
+                                    {{ end }}
+                                </div>
+                            </div>
+                        </div>
+                    {{ else }}
+                        {{/* Standard Link */}}
+                        <a href="{{ .url }}" class="hover:text-lab-accent transition-colors">
+                            {{ .name }}
+                        </a>
+                    {{ end }}
+                {{ end }}
+            </div>
+
+            <div class="flex items-center gap-4">
+                {{ with $data.cta }}
+                    {{ if .enable }}
+                    <a href="{{ .url }}" class="hidden md:block px-5 py-2 text-xs font-bold bg-lab-text text-white hover:bg-lab-accent transition-colors duration-300 shadow-sm">
+                        {{ .text }}
+                    </a>
+                    {{ end }}
+                {{ end }}
+
+                <button id="mobile-menu-btn" class="md:hidden text-lab-text p-1 focus:outline-none z-50 relative" aria-label="Toggle Menu">
+                    <svg class="w-6 h-6 transition-transform duration-300" id="menu-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                    </svg>
+                    <svg class="w-6 h-6 hidden transition-transform duration-300" id="close-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div id="mobile-menu" class="md:hidden fixed inset-0   bg-lab-surface/80  backdrop-blur-xl z-40 translate-x-full transition-transform duration-300 flex flex-col pt-24 ">
+        <div class="flex flex-col gap-6 text-sm font-medium tracking-wide  bg-lab-surface/80 text-lab-text z-40 px-4">
+            {{ range $data.menu }}
+                <div class="flex flex-col gap-3 border-b border-lab-border/20 pb-3">
+                    {{ if .children }}
+                        <span class="text-lab-accent/60 text-xs uppercase font-bold">{{ .name }}</span>
+                        <div class="flex flex-col gap-3 pl-4 border-l-2 border-lab-border/20">
+                            {{ range .children }}
+                                <a href="{{ .url }}" class="hover:text-lab-accent transition-colors block">{{ .name }}</a>
+                            {{ end }}
+                        </div>
+                    {{ else }}
+                        <a href="{{ .url }}" class="hover:text-lab-accent transition-colors block">{{ .name }}</a>
+                    {{ end }}
+                </div>
+            {{ end }}
+
+            {{ with $data.cta }}
+                {{ if .enable }}
+                <a href="{{ .url }}" class="mt-4 text-center px-5 py-3 text-xs font-bold bg-lab-text text-white hover:bg-lab-accent transition-colors duration-300">
+                    {{ .text }}
+                </a>
+                {{ end }}
+            {{ end }}
+        </div>
+    </div>
+</nav>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+        const menuIcon = document.getElementById('menu-icon');
+        const closeIcon = document.getElementById('close-icon');
+        let isOpen = false;
+
+        btn.addEventListener('click', () => {
+            isOpen = !isOpen;
+            if (isOpen) {
+                menu.classList.remove('translate-x-full');
+                menuIcon.classList.add('hidden');
+                closeIcon.classList.remove('hidden');
+                document.body.style.overflow = 'hidden'; // Prevent background scrolling
+            } else {
+                menu.classList.add('translate-x-full');
+                menuIcon.classList.remove('hidden');
+                closeIcon.classList.add('hidden');
+                document.body.style.overflow = '';
+            }
+        });
+
+        // Close menu when clicking a link
+        menu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                isOpen = false;
+                menu.classList.add('translate-x-full');
+                menuIcon.classList.remove('hidden');
+                closeIcon.classList.add('hidden');
+                document.body.style.overflow = '';
+            });
+        });
+    });
+</script>

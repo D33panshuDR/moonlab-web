@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+    {{ partial "head.html" . }}
+<body class="font-mono text-lab-text antialiased selection:bg-lab-accent selection:text-white">
+
+    {{ partial "header.html" . }}
+        {{ block "main" . }}{{ end }}
+
+
+    {{ partial "footer.html" . }}
+
+    <script>
+        // Scroll Reveal Observer
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>

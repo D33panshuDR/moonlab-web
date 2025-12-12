@@ -1,0 +1,74 @@
+@import "tailwindcss";
+@source "hugo_stats.json";
+@plugin "@tailwindcss/typography";
+
+@theme {
+      /* ------------------------------
+     Colors — namespace: --color-*
+  ------------------------------ */
+  --color-lab-bg: #F5F5F7;
+  --color-lab-surface: #FFFFFF;
+  --color-lab-text: #1D1D1F;
+  --color-lab-muted: #86868B;
+  --color-lab-border: #D1D5DB;
+  --color-lab-accent: #2563EB;
+  --color-lab-accent-hover: #1D4ED8;
+
+  /* ------------------------------
+     Fonts — namespace: --font-*
+  ------------------------------ */
+  --font-title: "Bebas Neue", cursive;
+  --font-mono: "Fira Code", monospace;
+
+  /* ------------------------------
+     Background images — namespace: --bg-*
+     (arbitrary images are allowed)
+  ------------------------------ */
+  --bg-grid-pattern:
+    linear-gradient(to right, #e5e7eb 1px, transparent 1px),
+    linear-gradient(to bottom, #e5e7eb 1px, transparent 1px);
+
+}
+
+body {
+  background-color: #f5f5f7;
+  color: #1d1d1f;
+}
+
+
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1); 
+}
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+.hover-underline-animation {
+  display: inline-block;
+  position: relative;
+}
+.hover-underline-animation::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 1px;
+  bottom: 0;
+  left: 0;
+  background-color: #2563eb;
+  transform-origin: bottom right;
+  transition: transform 0.25s ease-out;
+}
+.hover-underline-animation:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+
+.bg-tech-grid {
+  background-size: 40px 40px;
+}

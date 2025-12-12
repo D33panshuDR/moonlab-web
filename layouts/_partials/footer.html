@@ -1,0 +1,52 @@
+{{ $data := site.Data.footer }}
+
+<footer class="bg-lab-text text-white py-20 border-t border-lab-border">
+    <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-12">
+        
+        {{/* 1. Brand & Copyright Section */}}
+        <div class="col-span-1 md:col-span-2">
+            <h4 class="font-title text-4xl mb-6">{{ $data.brand.title }}</h4>
+            <p class="text-xs text-gray-400 max-w-sm leading-relaxed mb-8">
+                {{ $data.brand.description }}
+            </p>
+            <div class="text-xs text-gray-500">
+                {{/* safeHTML is needed to render the <br> and &copy; entities from YAML */}}
+                {{ $data.brand.copyright | safeHTML }}
+            </div>
+        </div>
+        
+        {{/* 2. Navigation Links */}}
+        <div>
+            <h5 class="text-xs font-bold uppercase tracking-widest text-gray-400 mb-6">
+                {{ $data.navigation.heading }}
+            </h5>
+            <ul class="space-y-3 text-sm">
+                {{ range $data.navigation.links }}
+                    <li>
+                        <a href="{{ .url }}" class="hover:text-lab-accent transition-colors">
+                            {{ .name }}
+                        </a>
+                    </li>
+                {{ end }}
+            </ul>
+        </div>
+
+        {{/* 3. Social Connect */}}
+        <div>
+            <h5 class="text-xs font-bold uppercase tracking-widest text-gray-400 mb-6">
+                {{ $data.social.heading }}
+            </h5>
+            <div class="flex gap-4">
+                {{ range $data.social.links }}
+                    <a href="{{ .url }}" aria-label="{{ .name }}" class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center hover:bg-lab-accent transition-colors">
+                        {{/* The SVG container remains in HTML, the path 'd' comes from YAML */}}
+                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="{{ .svg_path }}"></path>
+                        </svg>
+                    </a>
+                {{ end }}
+            </div>
+        </div>
+
+    </div>
+</footer>

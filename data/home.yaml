@@ -1,0 +1,20 @@
+header:
+  tagline: "Est. 2019 | Moonlab @ IISERB"
+  
+  heading:
+    line1: "Multi Robot Autonomy Lab"
+    line2: "Indian Institute of Science Education and Research, Bhopal" # This renders in the muted color
+    
+  description: "We engineer the cognitive architecture for autonomous systems. Bridging the gap between perception, learning, and control in unstructured environments."
+  
+  buttons:
+    primary:
+      text: "VIEW RESEARCH"
+      url: "#research"
+    secondary:
+      text: "All Publications"
+      url: "#publications"
+      
+  image:
+    src: "https://picsum.photos/seed/robotarm/800/1000" # Replace with local path e.g. /images/arm.jpg
+    alt: "Robotics Arm"

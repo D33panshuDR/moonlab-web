@@ -1,0 +1,20 @@
+menu:
+  - name: "RESEARCH"
+    url: "#research"
+    # New: Add 'children' for dropdowns
+    children:
+      - name: "Active Projects"
+        url: "#active-projects"
+      - name: "Archive"
+        url: "#archive"
+  - name: "UPDATES"
+    url: "#updates"
+  - name: "PUBLICATIONS"
+    url: "#publications"
+  - name: "PEOPLE"
+    url: "/people"
+
+cta:
+  enable: true
+  text: "Contact"
+  url: "/contact"
