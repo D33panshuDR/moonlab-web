@@ -1,162 +1,91 @@
- {{ define "main" }}
+{{ define "main" }}
 
- {{ partial "ui/hero.html" }}
+    {{ partial "ui/hero.html" . }}
 
-    <section id="research" class="py-32 bg-white border-t border-lab-border">
+    <section id="research" class="py-32 bg-white">
         <div class="max-w-7xl mx-auto px-6">
-            <div class="flex flex-col md:flex-row justify-between items-end mb-20 reveal">
-                <h2 class="font-title text-5xl md:text-6xl text-lab-text">Core Research</h2>
-                <a href="#" class="hidden md:block group text-xs font-bold tracking-wide hover:text-lab-accent transition-colors">
-                    VIEW ALL TOPICS <span class="inline-block transition-transform group-hover:translate-x-1">→</span>
+            <div class="flex flex-col md:flex-row justify-between items-end mb-16 reveal">
+                <div>
+                    <h2 class="font-title text-4xl md:text-5xl font-bold text-lab-text mb-4">Research Areas</h2>
+                    <p class="text-lab-muted">Exploring the frontiers of autonomous systems.</p>
+                </div>
+                <a href="/research" class="hidden md:flex items-center gap-2 text-sm font-bold tracking-wide hover:text-lab-accent transition-colors group">
+                    VIEW ALL TOPICS <span class="transition-transform group-hover:translate-x-1">→</span>
                 </a>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-x-8 gap-y-16">
-                <article class="group cursor-pointer reveal">
-                    <div class="relative overflow-hidden aspect-4/3 mb-6 bg-lab-bg">
-                        <img src="https://picsum.photos/seed/drone_flight/600/400" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 grayscale group-hover:grayscale-0">
-                        <div class="absolute inset-0 border border-black/5 pointer-events-none"></div>
-                    </div>
-                    <span class="text-[10px] font-bold text-lab-accent uppercase tracking-wider mb-2 block">01 — Aerial</span>
-                    <h3 class="font-title text-3xl mb-3 group-hover:text-lab-accent transition-colors">Swarm Navigation</h3>
-                    <p class="text-xs text-lab-muted leading-relaxed line-clamp-3">
-                        Decentralized path planning for micro-UAVs in GPS-denied environments utilizing optical flow sensors and SLAM.
-                    </p>
-                </article>
-
-                <article class="group cursor-pointer reveal" style="transition-delay: 100ms;">
-                    <div class="relative overflow-hidden aspect-4/3 mb-6 bg-lab-bg">
-                        <img src="https://picsum.photos/seed/humanoid/600/400" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 grayscale group-hover:grayscale-0">
-                        <div class="absolute inset-0 border border-black/5 pointer-events-none"></div>
-                    </div>
-                    <span class="text-[10px] font-bold text-lab-accent uppercase tracking-wider mb-2 block">02 — Humanoid</span>
-                    <h3 class="font-title text-3xl mb-3 group-hover:text-lab-accent transition-colors">Bipedal Locomotion</h3>
-                    <p class="text-xs text-lab-muted leading-relaxed line-clamp-3">
-                        Model predictive control strategies for stability on uneven terrain, focusing on energy efficiency and impact absorption.
-                    </p>
-                </article>
-
-                <article class="group cursor-pointer reveal" style="transition-delay: 200ms;">
-                    <div class="relative overflow-hidden aspect-4/3 mb-6 bg-lab-bg">
-                        <img src="https://picsum.photos/seed/sensor/600/400" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 grayscale group-hover:grayscale-0">
-                        <div class="absolute inset-0 border border-black/5 pointer-events-none"></div>
-                    </div>
-                    <span class="text-[10px] font-bold text-lab-accent uppercase tracking-wider mb-2 block">03 — Haptics</span>
-                    <h3 class="font-title text-3xl mb-3 group-hover:text-lab-accent transition-colors">Soft Manipulation</h3>
-                    <p class="text-xs text-lab-muted leading-relaxed line-clamp-3">
-                        Using pneumatic actuators and silicone skins to handle delicate objects with variable stiffness feedback loops.
-                    </p>
-                </article>
-            </div>
-
-            <div class="mt-12 md:hidden">
-                <a href="#" class="block w-full py-4 text-center border border-lab-border text-xs font-bold hover:bg-lab-text hover:text-white transition-colors">
-                    VIEW ALL RESEARCH
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <section id="updates" class="py-24 bg-lab-bg border-y border-lab-border">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="mb-12 reveal">
-                <span class="text-xs font-bold text-lab-accent uppercase tracking-widest">News & Activity</span>
-                <h2 class="font-title text-4xl mt-2">Lab Updates</h2>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="bg-white p-8 border border-lab-border hover:border-lab-accent transition-colors reveal">
-                    <time class="text-[10px] text-lab-muted font-bold block mb-4">DECEMBER 08, 2025</time>
-                    <h4 class="font-bold text-lg mb-3 leading-snug">New Grant Awarded: Undersea Exploration</h4>
-                    <p class="text-xs text-lab-muted leading-relaxed mb-6">
-                        The lab has received a $1.2M grant to develop autonomous maintenance robots for underwater data cables.
+                <article class="group cursor-pointer reveal flex flex-col h-full">
+                    <div class="relative overflow-hidden rounded-2xl aspect-[4/3] mb-6 bg-slate-100">
+                        <img src="https://picsum.photos/seed/drone/800/600" loading="lazy" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                        <div class="absolute inset-0 bg-black/5 group-hover:bg-transparent transition-colors duration-500"></div>
+                    </div>
+                    <span class="text-xs font-bold text-lab-accent uppercase tracking-wider mb-2">01 — Aerial Systems</span>
+                    <h3 class="font-title text-2xl font-bold mb-3 group-hover:text-lab-accent transition-colors">Swarm Navigation</h3>
+                    <p class="text-sm text-lab-muted leading-relaxed line-clamp-3">
+                        Decentralized path planning for micro-UAVs in GPS-denied environments utilizing optical flow sensors.
                     </p>
-                    <a href="#" class="text-[10px] font-bold border-b border-lab-border pb-1 hover:border-lab-accent transition-colors">READ ANNOUNCEMENT</a>
-                </div>
+                </article>
 
-                <div class="bg-white p-8 border border-lab-border hover:border-lab-accent transition-colors reveal" style="transition-delay: 100ms;">
-                    <time class="text-[10px] text-lab-muted font-bold block mb-4">NOVEMBER 22, 2025</time>
-                    <h4 class="font-bold text-lg mb-3 leading-snug">Dr. Silva Keynotes at ROSCon 2025</h4>
-                    <p class="text-xs text-lab-muted leading-relaxed mb-6">
-                        Our lead researcher discussed the future of open-source middleware in industrial robotics applications.
+                <article class="group cursor-pointer reveal flex flex-col h-full" style="transition-delay: 100ms;">
+                    <div class="relative overflow-hidden rounded-2xl aspect-[4/3] mb-6 bg-slate-100">
+                        <img src="https://picsum.photos/seed/robot/800/600" loading="lazy" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                        <div class="absolute inset-0 bg-black/5 group-hover:bg-transparent transition-colors duration-500"></div>
+                    </div>
+                    <span class="text-xs font-bold text-lab-accent uppercase tracking-wider mb-2">02 — Humanoids</span>
+                    <h3 class="font-title text-2xl font-bold mb-3 group-hover:text-lab-accent transition-colors">Bipedal Locomotion</h3>
+                    <p class="text-sm text-lab-muted leading-relaxed line-clamp-3">
+                        Model predictive control strategies for stability on uneven terrain, focusing on energy efficiency.
                     </p>
-                    <a href="#" class="text-[10px] font-bold border-b border-lab-border pb-1 hover:border-lab-accent transition-colors">WATCH RECORDING</a>
-                </div>
+                </article>
 
-                <div class="bg-white p-8 border border-lab-border hover:border-lab-accent transition-colors reveal" style="transition-delay: 200ms;">
-                    <time class="text-[10px] text-lab-muted font-bold block mb-4">OCTOBER 15, 2025</time>
-                    <h4 class="font-bold text-lg mb-3 leading-snug">Open Position: PhD Candidate</h4>
-                    <p class="text-xs text-lab-muted leading-relaxed mb-6">
-                        We are currently accepting applications for a PhD position focused on Computer Vision and Edge AI.
+                <article class="group cursor-pointer reveal flex flex-col h-full" style="transition-delay: 200ms;">
+                    <div class="relative overflow-hidden rounded-2xl aspect-[4/3] mb-6 bg-slate-100">
+                        <img src="https://picsum.photos/seed/tech/800/600" loading="lazy" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                        <div class="absolute inset-0 bg-black/5 group-hover:bg-transparent transition-colors duration-500"></div>
+                    </div>
+                    <span class="text-xs font-bold text-lab-accent uppercase tracking-wider mb-2">03 — Haptics</span>
+                    <h3 class="font-title text-2xl font-bold mb-3 group-hover:text-lab-accent transition-colors">Soft Manipulation</h3>
+                    <p class="text-sm text-lab-muted leading-relaxed line-clamp-3">
+                        Using pneumatic actuators and silicone skins to handle delicate objects with variable stiffness.
                     </p>
-                    <a href="#" class="text-[10px] font-bold border-b border-lab-border pb-1 hover:border-lab-accent transition-colors">APPLY NOW</a>
-                </div>
+                </article>
             </div>
         </div>
     </section>
 
-    <section id="publications" class="py-32 bg-white">
+    <section id="updates" class="py-24 bg-lab-surface border-y border-lab-border">
         <div class="max-w-7xl mx-auto px-6">
-            <div class="flex justify-between items-end mb-16 reveal">
-                <div>
-                    <h2 class="font-title text-5xl text-lab-text">Selected Papers</h2>
-                </div>
-                <a href="#" class="px-6 py-3 border border-lab-border text-xs font-bold hover:bg-lab-text hover:text-white transition-colors">
-                    VIEW ALL PUBLICATIONS
-                </a>
+            <div class="flex justify-between items-center mb-12 reveal">
+                <h2 class="font-title text-3xl font-bold">Lab Activity</h2>
+                <a href="/news" class="text-xs font-bold border-b border-lab-border pb-1 hover:border-lab-text transition-colors">VIEW ARCHIVE</a>
             </div>
 
-            <div class="border-t border-lab-border">
-                <div class="group flex flex-col md:flex-row gap-6 py-8 border-b border-lab-border hover:bg-lab-bg/50 transition-colors px-2 reveal">
-                    <div class="md:w-1/6">
-                        <span class="text-[10px] font-bold text-lab-accent bg-lab-accent/10 px-2 py-1">ICRA 2025</span>
-                    </div>
-                    <div class="md:w-4/6">
-                        <h3 class="text-xl font-bold mb-2 group-hover:text-lab-accent transition-colors">
-                            Reinforcement Learning for Dexterous Manipulation
-                        </h3>
-                        <p class="text-xs text-lab-muted">Authors: J. Smith, A. Thorne, K. Liu</p>
-                    </div>
-                    <div class="md:w-1/6 text-right flex items-center justify-end gap-4">
-                        <a href="#" class="text-[10px] font-bold text-lab-muted hover:text-lab-text hover-underline-animation">PDF</a>
-                        <a href="#" class="text-[10px] font-bold text-lab-muted hover:text-lab-text hover-underline-animation">CODE</a>
-                    </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="bg-white p-8 rounded-xl shadow-sm border border-slate-100 hover:shadow-md transition-all duration-300 reveal group">
+                    <time class="text-xs text-lab-muted font-mono mb-4 block">DEC 08, 2025</time>
+                    <h4 class="font-bold text-lg mb-3 leading-snug group-hover:text-lab-accent transition-colors">New Grant: Undersea Exploration</h4>
+                    <p class="text-sm text-lab-muted leading-relaxed">
+                        $1.2M grant awarded to develop autonomous maintenance robots for underwater data cables.
+                    </p>
                 </div>
 
-                <div class="group flex flex-col md:flex-row gap-6 py-8 border-b border-lab-border hover:bg-lab-bg/50 transition-colors px-2 reveal">
-                    <div class="md:w-1/6">
-                        <span class="text-[10px] font-bold text-lab-accent bg-lab-accent/10 px-2 py-1">RSS 2024</span>
-                    </div>
-                    <div class="md:w-4/6">
-                        <h3 class="text-xl font-bold mb-2 group-hover:text-lab-accent transition-colors">
-                            Visual-Inertial Odometry for High-Speed Drones
-                        </h3>
-                        <p class="text-xs text-lab-muted">Authors: M. Chen, R. Al-Fayed</p>
-                    </div>
-                    <div class="md:w-1/6 text-right flex items-center justify-end gap-4">
-                        <a href="#" class="text-[10px] font-bold text-lab-muted hover:text-lab-text hover-underline-animation">PDF</a>
-                        <a href="#" class="text-[10px] font-bold text-lab-muted hover:text-lab-text hover-underline-animation">VIDEO</a>
-                    </div>
+                <div class="bg-white p-8 rounded-xl shadow-sm border border-slate-100 hover:shadow-md transition-all duration-300 reveal group" style="transition-delay: 100ms;">
+                    <time class="text-xs text-lab-muted font-mono mb-4 block">NOV 22, 2025</time>
+                    <h4 class="font-bold text-lg mb-3 leading-snug group-hover:text-lab-accent transition-colors">Keynote at ROSCon 2025</h4>
+                    <p class="text-sm text-lab-muted leading-relaxed">
+                        Lead researcher discussed the future of open-source middleware in industrial robotics.
+                    </p>
                 </div>
 
-                <div class="group flex flex-col md:flex-row gap-6 py-8 border-b border-lab-border hover:bg-lab-bg/50 transition-colors px-2 reveal">
-                    <div class="md:w-1/6">
-                        <span class="text-[10px] font-bold text-lab-accent bg-lab-accent/10 px-2 py-1">NATURE MI</span>
-                    </div>
-                    <div class="md:w-4/6">
-                        <h3 class="text-xl font-bold mb-2 group-hover:text-lab-accent transition-colors">
-                            Ethical Frameworks for Autonomous Decision Making
-                        </h3>
-                        <p class="text-xs text-lab-muted">Authors: S. Johnson, P. GLaDOS</p>
-                    </div>
-                    <div class="md:w-1/6 text-right flex items-center justify-end gap-4">
-                        <a href="#" class="text-[10px] font-bold text-lab-muted hover:text-lab-text hover-underline-animation">PDF</a>
-                    </div>
+                <div class="bg-white p-8 rounded-xl shadow-sm border border-slate-100 hover:shadow-md transition-all duration-300 reveal group" style="transition-delay: 200ms;">
+                    <time class="text-xs text-lab-muted font-mono mb-4 block">OCT 15, 2025</time>
+                    <h4 class="font-bold text-lg mb-3 leading-snug group-hover:text-lab-accent transition-colors">Hiring: PhD Candidate</h4>
+                    <p class="text-sm text-lab-muted leading-relaxed">
+                        Accepting applications for a PhD position focused on Computer Vision and Edge AI.
+                    </p>
                 </div>
             </div>
         </div>
     </section>
-
-    
 {{ end }}
-  

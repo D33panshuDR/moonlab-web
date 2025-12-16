@@ -1,18 +1,22 @@
 menu:
-  - name: "RESEARCH"
+  - name: "Research"
     url: "#research"
-    # New: Add 'children' for dropdowns
     children:
       - name: "Active Projects"
         url: "#active-projects"
-      - name: "Archive"
-        url: "#archive"
-  - name: "UPDATES"
+      - name: "Publications"
+        url: "#publications"
+      - name: "Facilities"
+        url: "#facilities"
+        
+  - name: "News"
     url: "#updates"
-  - name: "PUBLICATIONS"
-    url: "#publications"
-  - name: "PEOPLE"
+    
+  - name: "Team"
     url: "/people"
+    
+  - name: "Join Us"
+    url: "/contact"
 
 cta:
   enable: true

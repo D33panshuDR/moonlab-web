@@ -1,20 +1,20 @@
 header:
-  tagline: "Est. 2019 | Moonlab @ IISERB"
+  tagline: "IISER BHOPAL"
   
   heading:
-    line1: "Multi Robot Autonomy Lab"
-    line2: "Indian Institute of Science Education and Research, Bhopal" # This renders in the muted color
+    line1: "Moon Lab"
+    line2: "Multi-Robot Autonomy"
     
-  description: "We engineer the cognitive architecture for autonomous systems. Bridging the gap between perception, learning, and control in unstructured environments."
+  description: "We engineer cognitive architectures for autonomous systems, bridging the gap between perception, learning, and control in unstructured environments."
   
   buttons:
     primary:
-      text: "VIEW RESEARCH"
+      text: "Our Research"
       url: "#research"
     secondary:
-      text: "All Publications"
+      text: "Recent Publications"
       url: "#publications"
       
   image:
-    src: "https://picsum.photos/seed/robotarm/800/1000" # Replace with local path e.g. /images/arm.jpg
-    alt: "Robotics Arm"
+    src: "https://picsum.photos/seed/moonlab_hero/1920/1080" 
+    alt: "Autonomous Drone Swarm"

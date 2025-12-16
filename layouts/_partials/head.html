@@ -1,43 +1,25 @@
 <head>
-    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-    
     <title>{{ if .IsHome }}{{ site.Title }}{{ else }}{{ .Title }} | {{ site.Title }}{{ end }}</title>
     <meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{ with .Site.Params.description }}{{ . }}{{ end }}{{ end }}">
     <meta name="author" content="{{ with .Site.Params.author }}{{ . }}{{ end }}">
-    <meta name="keywords" content="{{ with .Keywords }}{{ delimit . ", " }}{{ else }}{{ with .Site.Params.keywords }}{{ delimit . ", " }}{{ end }}{{ end }}">
-
     
     <meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}">
     <meta property="og:title" content="{{ .Title }}">
     <meta property="og:description" content="{{ with .Description }}{{ . }}{{ else }}{{ with .Site.Params.description }}{{ . }}{{ end }}{{ end }}">
     <meta property="og:image" content="{{ with .Params.image }}{{ . | absURL }}{{ else }}{{ with .Site.Params.image }}{{ . | absURL }}{{ end }}{{ end }}">
     <meta property="og:url" content="{{ .Permalink }}">
-    <meta property="og:site_name" content="{{ .Site.Title }}">
-
-  
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="{{ .Title }}">
-    <meta name="twitter:description" content="{{ with .Description }}{{ . }}{{ else }}{{ with .Site.Params.description }}{{ . }}{{ end }}{{ end }}">
-    <meta name="twitter:image" content="{{ with .Params.image }}{{ . | absURL }}{{ else }}{{ with .Site.Params.image }}{{ . | absURL }}{{ end }}{{ end }}">
-
-
-    <link rel="canonical" href="{{ .Permalink }}">
-
-
     
+    <link rel="canonical" href="{{ .Permalink }}">
     <link rel="icon" href="/favicon.ico">
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    {{ with site.Params.google_fonts }}
-    <link href="https://fonts.googleapis.com/css2?{{ range $index, $font := . }}{{ if $index }}&{{ end }}family={{ $font | urlquery }}{{ end }}&display=swap" rel="stylesheet">
-    {{ end }}
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Manrope:wght@400;500;700;800&display=swap" rel="stylesheet">
+
     {{ with (templates.Defer (dict "key" "global")) }}
             {{ partial "css.html" . }}
     {{ end }}
