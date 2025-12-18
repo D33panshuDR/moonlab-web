@@ -20,11 +20,21 @@
             {{ $page.Params.bio }}
         </p>
 
-        <div class="flex flex-wrap justify-center md:justify-start gap-8 text-sm text-lab-muted">
+        <div class="flex flex-wrap justify-center md:justify-start gap-6 text-sm text-lab-muted items-center">
+            
+            {{/* Email */}}
             {{ with $page.Params.contact.email }}
             <a href="mailto:{{ . }}" class="hover:text-lab-accent flex items-center gap-2 transition-colors">
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
-                {{ . }}
+                Email
+            </a>
+            {{ end }}
+
+            {{/* Google Scholar */}}
+            {{ with $page.Params.contact.scholar }}
+            <a href="{{ . }}" target="_blank" class="hover:text-lab-accent flex items-center gap-2 transition-colors">
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 24a7 7 0 1 1 0-14 7 7 0 0 1 0 14zm0-24L0 9.5l4.838 3.94A8 8 0 0 1 12 9a8 8 0 0 1 7.162 4.44L24 9.5z"/></svg>
+                Google Scholar
             </a>
             {{ end }}
         </div>
@@ -36,7 +46,7 @@
     
     <a href="{{ $page.RelPermalink }}" class="block aspect-square overflow-hidden rounded-xl bg-slate-100 relative mb-4 cursor-pointer">
         {{ with $page.Params.profile_image }}
-        <img src="{{ . }}" alt="{{ $page.Title }}" loading="lazy" class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500">
+        <img src="{{ . }}" alt="{{ $page.Title }}" loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition-all duration-500">
         {{ end }}
     </a>
     
@@ -46,12 +56,27 @@
         </a>
         <span class="text-xs text-lab-muted font-medium block mb-2">{{ $page.Params.role }}</span>
         
-        <div class="flex gap-3 text-lab-muted opacity-60 group-hover:opacity-100 transition-opacity">
+        <div class="flex gap-4 text-lab-muted opacity-60 group-hover:opacity-100 transition-opacity mt-2">
+            
+            {{/* Email */}}
             {{ with $page.Params.contact.email }}
-            <a href="mailto:{{ . }}" class="hover:text-lab-accent"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg></a>
+            <a href="mailto:{{ . }}" aria-label="Email" class="hover:text-lab-accent transition-colors">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+            </a>
             {{ end }}
+
+            {{/* Google Scholar (New) */}}
+            {{ with $page.Params.contact.scholar }}
+            <a href="{{ . }}" aria-label="Google Scholar" target="_blank" class="hover:text-lab-accent transition-colors">
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 24a7 7 0 1 1 0-14 7 7 0 0 1 0 14zm0-24L0 9.5l4.838 3.94A8 8 0 0 1 12 9a8 8 0 0 1 7.162 4.44L24 9.5z"/></svg>
+            </a>
+            {{ end }}
+
+            {{/* LinkedIn */}}
             {{ with $page.Params.contact.linkedin }}
-            <a href="{{ . }}" target="_blank" class="hover:text-lab-accent"><svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg></a>
+            <a href="{{ . }}" aria-label="LinkedIn" target="_blank" class="hover:text-lab-accent transition-colors">
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+            </a>
             {{ end }}
         </div>
     </div>

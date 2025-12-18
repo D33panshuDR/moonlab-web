@@ -1,95 +1,57 @@
 {{ define "main" }}
-<main class="max-w-7xl mx-auto px-6 py-24 space-y-24">
-    
-    {{ $all_people := sort .Pages "Weight" }}
-    
-    {{/* Grouping Logic */}}
-    {{ $leadership := where $all_people "Params.category" "leadership" }}
-    {{ $postdocs := where $all_people "Params.category" "postdoc" }}
-    {{ $phds := where $all_people "Params.category" "phd" }}
-    {{ $ras := where $all_people "Params.category" "ra" }}
-    {{ $bsms := where $all_people "Params.category" "bsms" }}
+<main class="pt-32 pb-24 bg-white min-h-screen">
+    <div class="max-w-7xl mx-auto px-6">
+        
+        <div class="text-center mb-16 reveal">
+            <h1 class="font-title text-5xl md:text-7xl font-bold mb-6 text-lab-text">Our Team</h1>
+            <p class="text-lab-muted text-lg max-w-2xl mx-auto">
+                Meet the researchers, engineers, and students behind Moon Lab.
+            </p>
+        </div>
 
+        {{/* DATA PREPARATION*/}}
+        {{ $all_people := .Pages }}
+        
+        {{/* Filter Faculty (To place them first) */}}
+        {{ $faculty := where $all_people "Params.group" "faculty" }}
+        {{ $faculty_sorted := $faculty.ByTitle }}
+        
+        {{/*Filter Everyone Else (Students + Staff) */}}
+        {{/* We use 'ne' (not equal) to get everyone who is NOT faculty */}}
+        {{ $others := where $all_people "Params.group" "ne" "faculty" }}
+        {{ $others_sorted := $others.ByTitle }}
 
+        {{/*SINGLE UNIFIED GRID*/}}
+        <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-x-8 gap-y-12 reveal">
+            
+            {{/* RENDER FACULTY FIRST */}}
+            {{ range $faculty_sorted }}
+                {{/* We use 'vertical' style so they fit into the same grid as students */}}
+                {{ partial "ui/person-card.html" (dict "page" . "style" "vertical") }}
+            {{ end }}
 
-    {{/* --- SECTION: LEADERSHIP --- */}}
-    {{ with $leadership }}
-    <section class="reveal">
-        {{ range . }}
-            {{ partial "ui/person-card.html" (dict "page" . "style" "leadership") }}
+            {{/* RENDER EVERYONE ELSE (Students & Staff mixed, alphabetical) */}}
+            {{ range $others_sorted }}
+                {{ partial "ui/person-card.html" (dict "page" . "style" "vertical") }}
+            {{ end }}
+            
+        </div>
+
+        {{/*DEBUGGING: Show Uncategorized Profiles*/}}
+        {{/* This helps catch profiles that don't have a 'group' set at all */}}
+        {{ $uncategorized := where $all_people "Params.group" "eq" nil }}
+        {{ if $uncategorized }}
+        <div class="mt-20 border-t border-red-200 pt-10">
+            <h3 class="text-red-500 font-bold mb-4">Uncategorized Profiles (Missing 'group' tag)</h3>
+            <p class="text-xs text-red-400 mb-2">These profiles won't appear above because they have no group. Add `group: student` or `group: staff` to them.</p>
+            <ul class="list-disc pl-5 text-red-400 text-sm">
+                {{ range $uncategorized }}
+                <li>{{ .Title }} (File: {{ .File.Path }})</li>
+                {{ end }}
+            </ul>
+        </div>
         {{ end }}
-    </section>
-    {{ end }}
 
-    {{/* --- SECTION: POSTDOCS --- */}}
-    {{ with $postdocs }}
-    <section class="reveal">
-        <div class="flex items-end justify-between mb-8">
-            <h3 class="font-title text-4xl text-lab-text">Postdoctoral Fellows</h3>
-            <span class="h-px bg-lab-border grow ml-8"></span>
-        </div>
-        {{/* Using vertical style for postdocs now */}}
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {{ range . }}
-                {{ partial "ui/person-card.html" (dict "page" . "style" "vertical") }}
-            {{ end }}
-        </div>
-    </section>
-    {{ end }}
-
-    {{/* --- SECTION: PHD CANDIDATES --- */}}
-    {{ with $phds }}
-    <section class="reveal">
-        <div class="flex items-end justify-between mb-8">
-            <h3 class="font-title text-4xl text-lab-text">PhD Scholars</h3>
-            <span class="h-px bg-lab-border grow ml-8"></span>
-        </div>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {{ range . }}
-                {{ partial "ui/person-card.html" (dict "page" . "style" "vertical") }}
-            {{ end }}
-        </div>
-    </section>
-    {{ end }}
-
-    {{/* --- SECTION: RESEARCH ASSISTANTS --- */}}
-    {{ with $ras }}
-    <section class="reveal">
-        <div class="flex items-end justify-between mb-8">
-            <h3 class="font-title text-4xl text-lab-text">Research Assistants</h3>
-            <span class="h-px bg-lab-border grow ml-8"></span>
-        </div>
-        {{/* Changed grid to accommodate vertical cards */}}
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {{ range . }}
-                {{ partial "ui/person-card.html" (dict "page" . "style" "vertical") }}
-            {{ end }}
-        </div>
-    </section>
-    {{ end }}
-
-    {{/* --- SECTION: BS-MS STUDENTS --- */}}
-    {{ with $bsms }}
-    <section class="reveal">
-        <div class="flex items-end justify-between mb-8">
-            <h3 class="font-title text-4xl text-lab-text">BS-MS Students</h3>
-            <span class="h-px bg-lab-border grow ml-8"></span>
-        </div>
-        {{/* 4 columns for undergrads as they might have less text, but still same vertical card */}}
-        <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
-            {{ range . }}
-                {{ partial "ui/person-card.html" (dict "page" . "style" "vertical") }}
-            {{ end }}
-        </div>
-    </section>
-    {{ end }}
-
-
-    <div class="text-center pt-12 border-t border-lab-border">
-        <a href="{{ "alumni" | relURL }}" class="inline-block border-b border-lab-border text-xs font-bold text-lab-muted hover:text-lab-accent hover:border-lab-accent transition-colors uppercase tracking-widest pb-1">
-            View Alumni Archive
-        </a>
     </div>
-
 </main>
 {{ end }}
