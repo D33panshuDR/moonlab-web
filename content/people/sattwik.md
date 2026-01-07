@@ -1,6 +1,7 @@
 ---
 title: "Sattwik Kumar Sahu"
 role: "Student Researcher"
+group: "staff"
 date: "2025-12-11"
 category: "bsms"
 bio: "yaay boy . Swagwik Here"

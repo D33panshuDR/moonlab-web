@@ -1,9 +1,10 @@
 ---
 title: "Dr. Sujit P.B."
 role: "Principal Investigator"
+group: "faculty"
 date: "2025-11-01"
 category: "leadership"
-bio: "Dr. Sujit P. B. (Pedda Baliyarasimhuni Sujit) is a Professor in the Department of Electrical Engineering & Computer Science at Indian Institute of Science Education and Research (IISER) Bhopal and leads the Multi-rObot autONomy (MOON) Lab, focusing on autonomous systems, robotics, multi-robot coordination, and aerial/underwater vehicles, with a strong research profile including numerous publications, patents, and supervision of PhD students. "
+bio: "Professor at EECS IISER Bhopal"
 
 profile_image: "/images/people/sujit.jpg"
 # status:

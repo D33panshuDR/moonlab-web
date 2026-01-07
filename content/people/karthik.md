@@ -1,6 +1,7 @@
 ---
 title: "Karthik Babu Nambiar"
 role: "PhD Scholar"
+group: "students"
 date: "2025-12-11"
 category: "phd"
 
