@@ -49,8 +49,7 @@
                     {{ end }}
                 {{ end }}
 
-                <button id="mobile-menu-btn" class="md:hidden text-lab-text p-2 -mr-2 focus:outline-none z-50 relative" aria-label="Toggle Menu">
-                    <svg class="w-7 h-7 transition-transform duration-300" id="menu-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<button id="mobile-menu-btn" class="md:hidden text-lab-text p-2 -mr-2 focus:outline-none z-[60] relative" aria-label="Toggle Menu">                    <svg class="w-7 h-7 transition-transform duration-300" id="menu-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8h16M4 16h16"></path>
                     </svg>
                     <svg class="w-7 h-7 hidden transition-transform duration-300" id="close-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -61,32 +60,31 @@
         </div>
     </div>
 
-    <div id="mobile-menu" class="md:hidden fixed inset-0 bg-white/95 backdrop-blur-2xl z-40 translate-x-full transition-transform duration-500 ease-cubic-bezier flex flex-col pt-32 px-8">
-        <div class="flex flex-col gap-8 text-lg font-semibold tracking-tight text-lab-text">
-            {{ range $data.menu }}
-                <div class="flex flex-col gap-4 border-b border-slate-100 pb-4">
-                    {{ if .children }}
-                        <span class="text-lab-muted text-xs uppercase tracking-widest">{{ .name }}</span>
-                        <div class="flex flex-col gap-4 pl-4 border-l-2 border-slate-100">
-                            {{ range .children }}
-                                <a href="{{ .url }}" class="hover:text-lab-accent transition-colors block">{{ .name }}</a>
-                            {{ end }}
-                        </div>
-                    {{ else }}
-                        <a href="{{ .url }}" class="hover:text-lab-accent transition-colors block text-2xl font-title">{{ .name }}</a>
-                    {{ end }}
-                </div>
-            {{ end }}
-
-            {{ with $data.cta }}
-                {{ if .enable }}
-                <a href="{{ .url }}" class="mt-8 text-center px-6 py-4 text-sm font-bold bg-lab-text text-white rounded-xl hover:bg-lab-accent transition-colors shadow-lg">
-                    {{ .text }}
-                </a>
+<div id="mobile-menu" style="background-color: #ffffff;" class="md:hidden fixed inset-0 z-40 translate-x-full transition-transform duration-500 ease-in-out flex flex-col pt-32 px-8 overflow-y-auto h-dvh">    <div class="flex flex-col gap-8 text-lg font-semibold tracking-tight text-lab-text">
+        {{ range $data.menu }}
+            <div class="flex flex-col gap-4 border-b border-slate-100 pb-4">
+                {{ if .children }}
+                    <span class="text-lab-muted text-xs uppercase tracking-widest">{{ .name }}</span>
+                    <div class="flex flex-col gap-4 pl-4 border-l-2 border-slate-100">
+                        {{ range .children }}
+                            <a href="{{ .url }}" class="hover:text-lab-accent transition-colors block">{{ .name }}</a>
+                        {{ end }}
+                    </div>
+                {{ else }}
+                    <a href="{{ .url }}" class="hover:text-lab-accent transition-colors block text-2xl font-title">{{ .name }}</a>
                 {{ end }}
+            </div>
+        {{ end }}
+
+        {{ with $data.cta }}
+            {{ if .enable }}
+            <a href="{{ .url }}" class="mt-4 text-center px-6 py-4 text-sm font-bold bg-lab-text text-white rounded-xl hover:bg-lab-accent transition-colors shadow-lg">
+                {{ .text }}
+            </a>
             {{ end }}
-        </div>
+        {{ end }}
     </div>
+</div>
 </nav>
 
 <script>
