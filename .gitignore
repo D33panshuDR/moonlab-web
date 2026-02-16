@@ -3,3 +3,4 @@ node_modules/
 .hugo_build_lock
 hugo_stats.json
 hugo.exe
+.env
