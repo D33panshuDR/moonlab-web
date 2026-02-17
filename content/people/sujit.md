@@ -36,29 +36,29 @@ interests:
   - "#SensorFusion"
 
 # Dynamic Sections (Remove to hide)
-updates:
-  - date: "NOV 2025"
-    text: "Invited talk at **CoRL 2025** on 'Minimalist Sensing for Maximum Agility'."
-    highlight: true # Renders accent color
-  - date: "OCT 2025"
-    text: "Our paper on Distributed Swarm SLAM was nominated for Best Systems Paper at IROS."
-    highlight: false
+# updates:
+#   - date: "NOV 2025"
+#     text: "Invited talk at **CoRL 2025** on 'Minimalist Sensing for Maximum Agility'."
+#     highlight: true # Renders accent color
+#   - date: "OCT 2025"
+#     text: "Our paper on Distributed Swarm SLAM was nominated for Best Systems Paper at IROS."
+#     highlight: false
 
-papers:
-  - title: "Visual-Inertial Odometry for High-Speed Drones"
-    # Use Markdown ** for bolding the name
-    authors: "**E. Silva**, M. Chen, R. Al-Fayed"
-    venue: "RSS 2024"
-    venue_style: "accent" # Options: accent, muted
-    links:
-      pdf: "#"
-      code: "#"
-  - title: "Real-time Dense Mapping with Neural Radiance Fields"
-    authors: "J. Doe, **E. Silva**"
-    venue: "ICCV 2023"
-    venue_style: "muted"
-    links:
-      pdf: "#"
+# papers:
+#   - title: "Visual-Inertial Odometry for High-Speed Drones"
+#     # Use Markdown ** for bolding the name
+#     authors: "**E. Silva**, M. Chen, R. Al-Fayed"
+#     venue: "RSS 2024"
+#     venue_style: "accent" # Options: accent, muted
+#     links:
+#       pdf: "#"
+#       code: "#"
+#   - title: "Real-time Dense Mapping with Neural Radiance Fields"
+#     authors: "J. Doe, **E. Silva**"
+#     venue: "ICCV 2023"
+#     venue_style: "muted"
+#     links:
+#       pdf: "#"
 
 # #teaching:
 #   - course: "CS 404: Autonomous Systems"
@@ -72,9 +72,9 @@ papers:
 #   - role: "Associate Editor"
 #     org: "IEEE Robotics and Automation Letters"
 
-gallery:
-  - "https://picsum.photos/seed/lab1/400/400"
-  - "https://picsum.photos/seed/lab2/400/400"
-  - "https://picsum.photos/seed/lab3/400/400"
+# gallery:
+#   - "https://picsum.photos/seed/lab1/400/400"
+#   - "https://picsum.photos/seed/lab2/400/400"
+#   - "https://picsum.photos/seed/lab3/400/400"
 ---
 Dr. Sujit P. B. (Pedda Baliyarasimhuni Sujit) is a Professor in the Department of Electrical Engineering & Computer Science at Indian Institute of Science Education and Research (IISER) Bhopal and leads the Multi-rObot autONomy (MOON) Lab, focusing on autonomous systems, robotics, multi-robot coordination, and aerial/underwater vehicles, with a strong research profile including numerous publications, patents, and supervision of PhD students. 
