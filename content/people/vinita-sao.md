@@ -3,7 +3,7 @@ title: "Vinita Sao"
 role: "PhD"
 group: "student"
 bio: "I focus on task allocation and scheduling in multi robot systems, emphasizing mathematical modeling, optimization, and heuristics to develop time efficient solutions for real world logistics applications such as train scheduling, warehouse operations, and port management."
-profile_image: "https://github.com/JustA3DObject/Images/blob/main/MoonLab/Vinita.png"
+profile_image: "https://raw.githubusercontent.com/JustA3DObject/Images/main/MoonLab/Vinita.png"
 interests: ["Multi Robot Task Allocation and Scheduling."]
 contact:
   github: "https://github.com/vinitasao"

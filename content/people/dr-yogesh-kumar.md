@@ -1,9 +1,9 @@
 ---
 title: "Dr. Yogesh Kumar"
 role: "Project Scientist I"
-group: "staff"
+group: "student"
 bio: ""
-profile_image: "https://github.com/JustA3DObject/Images/blob/main/MoonLab/Yogesh.png"
+profile_image: "https://raw.githubusercontent.com/JustA3DObject/Images/main/MoonLab/Yogesh.png"
 interests: ["Nonlinear and Adaptive Control", "Counter Swarm", "Image based Visual Servoing", "Neuroadaptive Control", "Output Feedback LQR  for Linear Systems"]
 contact:
   github: ""

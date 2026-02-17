@@ -1,9 +1,9 @@
 ---
 title: "Shivangi Gupta"
 role: "Project Assistant"
-group: "staff"
+group: "student"
 bio: "I am responsible for handling documentation, coordination, communication, and day-to-day office operations. Committed to ensuring smooth administrative processes and organizational efficiency."
-profile_image: "https://github.com/JustA3DObject/Images/blob/main/MoonLab/Shivangi.png"
+profile_image: "https://raw.githubusercontent.com/JustA3DObject/Images/main/MoonLab/Shivangi.png"
 interests: []
 contact:
   github: ""

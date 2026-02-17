@@ -3,7 +3,7 @@ title: "Sattwik Kumar Sahu"
 role: "BS-MS"
 group: "student"
 bio: "I develop large-scale multimodal models for zero-shot robot navigation and generative control, deploying them on real hardware, with a focus on self-supervised representation learning and latent predictive world models for robotics."
-profile_image: "https://github.com/JustA3DObject/Images/blob/main/MoonLab/Sattwik.jpg"
+profile_image: "https://raw.githubusercontent.com/JustA3DObject/Images/main/MoonLab/Sattwik.jpg"
 interests: ["Multimodal Models", "Embodied Intelligence", "Self-supervised Learning", "World Models", "Off-road Navigation", "Human-in-the-Loop Systems"]
 contact:
   github: "github.com/sattwik-sahu"

@@ -3,7 +3,7 @@ title: "Tejal R"
 role: "BS"
 group: "student"
 bio: "I am interested in Reinforcement Learning for multi-agent systems and collective behavior."
-profile_image: "https://github.com/JustA3DObject/Images/blob/main/MoonLab/Tejal.jpg"
+profile_image: "https://raw.githubusercontent.com/JustA3DObject/Images/main/MoonLab/Tejal.jpg"
 interests: ["Reinforcement Learning", "Multi Agent Systems", "Pursuit Evasion Games"]
 contact:
   github: "https://github.com/tejal-r"

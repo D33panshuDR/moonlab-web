@@ -1,9 +1,9 @@
 ---
 title: "Moin Ahmed"
 role: "Research staff"
-group: "staff"
+group: "student"
 bio: "Interested in UAV, hardware and control."
-profile_image: "https://github.com/JustA3DObject/Images/blob/main/MoonLab/Moin%20Ahmed.png"
+profile_image: "https://raw.githubusercontent.com/JustA3DObject/Images/main/MoonLab/Moin%20Ahmed.png"
 interests: ["Mechatronics", "UAV", "Controllers"]
 contact:
   github: "https://github.com/MoinA0529"

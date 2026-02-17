@@ -1,9 +1,9 @@
 ---
 title: "Aman Ansari"
 role: "Research staff"
-group: "staff"
+group: "student"
 bio: "I develop algorithms and play with robots."
-profile_image: "https://github.com/JustA3DObject/Images/blob/main/MoonLab/Aman.jpeg"
+profile_image: "https://raw.githubusercontent.com/JustA3DObject/Images/main/MoonLab/aman.jpeg"
 interests: ["Multi-Robot Systems", "Perception", "Embodied AI", "Field Robotics"]
 contact:
   github: "https://github.com/Amann09"
