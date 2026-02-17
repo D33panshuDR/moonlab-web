@@ -15,7 +15,7 @@ profile_image: "/images/people/sujit.jpg"
 contact:
   email: "sujit@iiserb.ac.in"
   office: "Room 401, AB1-C, IISER Bhopal"
-  # github: "https://github.com"
+  github: "https://github.com/pbsujit"
   scholar: "https://scholar.google.com/citations?user=qqwyAwoAAAAJ&hl=en"
   linkedin: "https://www.linkedin.com/in/sujit-p-b-49366a3/"
 

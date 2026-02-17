@@ -2,6 +2,7 @@ import csv
 import requests
 import os
 import re
+import json 
 from dotenv import load_dotenv 
 
 load_dotenv()
@@ -13,6 +14,7 @@ if not SHEET_URL:
     exit(1)
 
 CONTENT_DIR = "content/people"
+# File to NEVER be deleted or edited through sheets
 KEEP_FILES = ["_index.md", "sujit.md"]
 
 def clean_filename(name):
@@ -41,7 +43,6 @@ def sync_people():
         # Skip deleting if the file is in KEEP list
         if filename in KEEP_FILES:
             continue
-            
         file_path = os.path.join(CONTENT_DIR, filename)
         os.remove(file_path)
 
@@ -61,7 +62,13 @@ def sync_people():
         filepath = os.path.join(CONTENT_DIR, filename)
         
         raw_group = row.get('Group', 'student').strip().lower()
-        raw_interests = row.get('Interests', '').strip()
+        
+        raw_interests_string = row.get('Interests', '').strip()
+        if raw_interests_string:
+            interest_list = [x.strip() for x in raw_interests_string.split(',') if x.strip()]
+            interests_yaml = json.dumps(interest_list)
+        else:
+            interests_yaml = "[]"
 
         md = f"""---
 title: "{name}"
@@ -69,7 +76,7 @@ role: "{row.get('Role', '').strip()}"
 group: "{raw_group}"
 bio: "{row.get('Bio', '').strip()}"
 profile_image: "{row.get('Image', '').strip()}"
-interests: "{raw_interests}"
+interests: {interests_yaml}
 contact:
   github: "{row.get('Github', '').strip()}"
   linkedin: "{row.get('Linkedin', '').strip()}"

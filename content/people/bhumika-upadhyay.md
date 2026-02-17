@@ -3,8 +3,8 @@ title: "Bhumika Upadhyay"
 role: "BS"
 group: "student"
 bio: "I am a BS student currently working on my thesis project focused on developing an indoor navigation system using localisation and machine learning techniques."
-profile_image: "https://drive.google.com/file/d/1t9DnRRp7-vHH6Cfnh1qitZwd1Pr-psxE/view?usp=sharing"
-interests: "Indoor Navigation"
+profile_image: "https://github.com/JustA3DObject/Images/blob/main/MoonLab/Bhumika.jpeg"
+interests: ["Indoor Navigation"]
 contact:
   github: "https://github.com/BhumikaUpadhyay05"
   linkedin: "www.linkedin.com/in/bhumika-upadhyay-9513722ab"

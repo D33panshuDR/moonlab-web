@@ -9,44 +9,75 @@
             </p>
         </div>
 
-        {{/* DATA PREPARATION*/}}
+        {{/* DATA PREPARATION & SORTING */}}
         {{ $all_people := .Pages }}
         
-        {{/* Filter Faculty (To place them first) */}}
+        {{/* Group 1: Faculty (Principal Investigator & Professors) */}}
         {{ $faculty := where $all_people "Params.group" "faculty" }}
-        {{ $faculty_sorted := $faculty.ByTitle }}
         
-        {{/*Filter Everyone Else (Students + Staff) */}}
-        {{/* We use 'ne' (not equal) to get everyone who is NOT faculty */}}
-        {{ $others := where $all_people "Params.group" "ne" "faculty" }}
-        {{ $others_sorted := $others.ByTitle }}
+        {{/* Group 2: Students (PhD, MS, Staff) */}}
+        {{ $students := (where $all_people "Params.group" "student").ByTitle }}
+        
+        {{/* Group 3: Alumni */}}
+        {{ $alumni := (where $all_people "Params.group" "alumni").ByTitle }}
 
-        {{/*SINGLE UNIFIED GRID*/}}
-        <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-x-8 gap-y-12 reveal">
-            
-            {{/* RENDER FACULTY FIRST */}}
-            {{ range $faculty_sorted }}
-                {{/* We use 'vertical' style so they fit into the same grid as students */}}
-                {{ partial "ui/person-card.html" (dict "page" . "style" "vertical") }}
-            {{ end }}
 
-            {{/* RENDER EVERYONE ELSE (Students & Staff mixed, alphabetical) */}}
-            {{ range $others_sorted }}
-                {{ partial "ui/person-card.html" (dict "page" . "style" "vertical") }}
-            {{ end }}
-            
+        {{/* RENDER FACULTY SECTION */}}
+        {{ if $faculty }}
+        <div class="mb-20">
+            <h2 class="text-2xl font-bold text-lab-text border-b border-lab-border pb-4 mb-10 flex items-center gap-3">
+                <span class="w-2 h-8 bg-lab-accent rounded-full"></span>
+                Leadership
+            </h2>
+            <div class="grid grid-cols-1 gap-8">
+                {{ range $faculty }}
+                    {{ partial "ui/person-card.html" . }}
+                {{ end }}
+            </div>
         </div>
+        {{ end }}
 
-        {{/*DEBUGGING: Show Uncategorized Profiles*/}}
-        {{/* This helps catch profiles that don't have a 'group' set at all */}}
+
+        {{/* RENDER STUDENTS SECTION */}}
+        {{ if $students }}
+        <div class="mb-20">
+            <h2 class="text-2xl font-bold text-lab-text border-b border-lab-border pb-4 mb-10 flex items-center gap-3">
+                <span class="w-2 h-8 bg-slate-300 rounded-full"></span>
+                Research Group
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                {{ range $students }}
+                    {{ partial "ui/person-card.html" . }}
+                {{ end }}
+            </div>
+        </div>
+        {{ end }}
+
+
+        {{/* RENDER ALUMNI SECTION */}}
+        {{ if $alumni }}
+        <div class="mb-20">
+            <h2 class="text-2xl font-bold text-lab-text border-b border-lab-border pb-4 mb-10 flex items-center gap-3">
+                <span class="w-2 h-8 bg-slate-200 rounded-full"></span>
+                Alumni
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6">
+                {{ range $alumni }}
+                    {{ partial "ui/person-card.html" . }}
+                {{ end }}
+            </div>
+        </div>
+        {{ end }}
+
+        {{/* DEBUGGING: Show Uncategorized Profiles */}}
         {{ $uncategorized := where $all_people "Params.group" "eq" nil }}
         {{ if $uncategorized }}
-        <div class="mt-20 border-t border-red-200 pt-10">
-            <h3 class="text-red-500 font-bold mb-4">Uncategorized Profiles (Missing 'group' tag)</h3>
-            <p class="text-xs text-red-400 mb-2">These profiles won't appear above because they have no group. Add `group: student` or `group: staff` to them.</p>
-            <ul class="list-disc pl-5 text-red-400 text-sm">
+        <div class="mt-20 border-t border-red-200 pt-10 bg-red-50 p-4 rounded-lg">
+            <h3 class="text-red-600 font-bold mb-2">Uncategorized Profiles Found</h3>
+            <p class="text-sm text-red-500 mb-2">The following profiles have no "group" assigned. Please edit the Google Sheet and set the group to "student", "faculty", or "alumni".</p>
+            <ul class="list-disc pl-5 text-red-500 text-sm">
                 {{ range $uncategorized }}
-                <li>{{ .Title }} (File: {{ .File.Path }})</li>
+                <li><strong>{{ .Title }}</strong> (File: {{ .File.Path }})</li>
                 {{ end }}
             </ul>
         </div>
