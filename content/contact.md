@@ -5,15 +5,15 @@ description: "Whether you are a prospective student, a potential collaborator, o
 
 contact_list:
   - label: "General Inquiries"
-    email: "info@aionlab.edu"
+    email: "gshivangi@iiserb.ac.in"
   - label: "Prospective Students"
-    email: "admissions@aionlab.edu"
+    email: "sujit@iiserb.ac.in"
     note: "*Please attach CV and Transcript"
   - label: "Press & Media"
-    email: "media@aionlab.edu"
+    email: "karthik23@iiserb.ac.in"
 
 location:
-  title: "Multi-Robot Autonomy Laboratory"
+  title: "Multi-Robot Autonomy Laboratory (MOON Lab)"
   # Using | indicates a multiline string in YAML. HTML tags are allowed here.
   address: |
     Indian Institute of Science Education and Research Bhopal (IISERB)<br>
