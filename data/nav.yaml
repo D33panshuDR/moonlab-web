@@ -1,4 +1,9 @@
 menu:
+
+  - name: "Home"
+    url: "/"
+    weight: 1
+
   - name: "Research"
     url: "#research"
     children:
