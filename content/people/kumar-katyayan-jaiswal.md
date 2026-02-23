@@ -3,7 +3,7 @@ title: "Kumar Katyayan Jaiswal"
 role: "PhD"
 group: "student"
 bio: "Hi !. I work on problems related to algorithm design, currently working on a path planning problem for kinematically constrained vehicles."
-profile_image: "https://raw.githubusercontent.com/JustA3DObject/Images/main/MoonLab/KT.jpeg"
+profile_image: "https://raw.githubusercontent.com/JustA3DObject/Images/main/MoonLab/KT.jpg"
 interests: ["Combinatorial Optimization-related problems"]
 contact:
   github: "https://github.com/katt-y?tab=overview&from=2024-12-01&to=2024-12-31"

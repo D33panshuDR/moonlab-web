@@ -8,11 +8,11 @@ menu:
     url: "#research"
     children:
       - name: "Active Projects"
-        url: "#active-projects"
+        url: "/active-projects/"
       - name: "Publications"
-        url: "#publications"
+        url: "/publications/"
       - name: "Facilities"
-        url: "#facilities"
+        url: "/facilities/"
         
   - name: "News"
     url: "#updates"

@@ -7,13 +7,13 @@ navigation:
   heading: "Explore"
   links:
     - name: "Research Areas"
-      url: "#research"
+      url: "/research/"
     - name: "Lab Members"
-      url: "/people"
+      url: "/people/"
     - name: "Publications"
-      url: "#publications"
+      url: "/publications/"
     - name: "Open Positions"
-      url: "/contact"
+      url: "/contact/"
 
 social:
   heading: "Connect"
