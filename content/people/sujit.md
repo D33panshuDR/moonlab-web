@@ -30,14 +30,14 @@ education:
 
 # Main Content Tags
 interests:
-  - "#SLAM"
-  - "#Perception"
-  - "#AerialRobotics"
-  - "#SensorFusion"
-  - "#Optimization"
-  - "#AutonoumusRobots"
-  - "#MarineRobotics"
-  - "#SwarmRobotics"
+  - "Aerial Robotics"
+  - "Sensor Fusion"
+  - "Optimization"
+  - "Autonoumus Robots"
+  - "Marine Robotics"
+  - "Swarm Robotics"
+  - "Human Swarm Interaction"
+  - "Field Robotics"
 
 # Dynamic Sections (Remove to hide)
 # updates:
