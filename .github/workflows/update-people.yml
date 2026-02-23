@@ -26,7 +26,7 @@ jobs:
       - name: Run Sync Script
         env:
           GOOGLE_SHEET_URL: ${{ secrets.GOOGLE_SHEET_URL }}
-        run: python sync_people.py
+        run: python scripts/sync_people.py
 
       - name: Commit and Push Changes
         run: |
