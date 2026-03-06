@@ -2,54 +2,86 @@
 
     {{ partial "ui/hero.html" . }}
 
-    <section id="research" class="py-8 bg-white">
+<section id="research" class="py-12 bg-white">
         <div class="max-w-7xl mx-auto px-6">
-            <div class="flex flex-col md:flex-row justify-between items-end mb-16 reveal">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-12 reveal">
                 <div>
                     <h2 class="font-title text-4xl md:text-5xl font-bold text-lab-text mb-4">Research Areas</h2>
                     <p class="text-lab-muted">Exploring the frontiers of autonomous systems.</p>
                 </div>
-                <a href="/research" class="hidden md:flex items-center gap-2 text-sm font-bold tracking-wide hover:text-lab-accent transition-colors group">
+                <a href="/research/" class="hidden md:flex items-center gap-2 text-sm font-bold tracking-wide hover:text-lab-accent transition-colors group">
                     VIEW ALL TOPICS <span class="transition-transform group-hover:translate-x-1">→</span>
                 </a>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <article class="group cursor-pointer reveal flex flex-col h-full">
+           <div class="flex overflow-x-auto snap-x snap-mandatory gap-6 pb-8 -mx-6 px-6 md:mx-0 md:px-0">
+                
+                <a href="/research/swarm-intelligence/" class="group cursor-pointer reveal flex flex-col w-[85vw] sm:w-[350px] md:w-[400px] snap-start shrink-0 block">
                     <div class="relative overflow-hidden rounded-2xl aspect-[4/3] mb-6 bg-slate-100">
-                        <img src="https://picsum.photos/seed/drone/800/600" loading="lazy" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                        <img src="https://images.unsplash.com/photo-1508614589041-895b88991e3e?auto=format&fit=crop&w=800&q=80" loading="lazy" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
                         <div class="absolute inset-0 bg-black/5 group-hover:bg-transparent transition-colors duration-500"></div>
                     </div>
-                    <span class="text-xs font-bold text-lab-accent uppercase tracking-wider mb-2">01 — Aerial Systems</span>
-                    <h3 class="font-title text-2xl font-bold mb-3 group-hover:text-lab-accent transition-colors">Swarm Navigation</h3>
+                    <span class="text-xs font-bold text-lab-accent uppercase tracking-wider mb-2">01 — Swarm Intelligence</span>
+                    <h3 class="font-title text-2xl font-bold mb-3 group-hover:text-lab-accent transition-colors">Multi-Robot Systems</h3>
                     <p class="text-sm text-lab-muted leading-relaxed line-clamp-3">
-                        Decentralized path planning for micro-UAVs in GPS-denied environments utilizing optical flow sensors.
+                        Focuses on the coordination and decision-making of distributed robotic teams, including cooperative control, swarm navigation, and pursuit-evasion games.
                     </p>
-                </article>
+                </a>
 
-                <article class="group cursor-pointer reveal flex flex-col h-full" style="transition-delay: 100ms;">
+                <a href="/research/field-robotics/" class="group cursor-pointer reveal flex flex-col w-[85vw] sm:w-[350px] md:w-[400px] snap-start shrink-0 block" style="transition-delay: 100ms;">
                     <div class="relative overflow-hidden rounded-2xl aspect-[4/3] mb-6 bg-slate-100">
-                        <img src="https://picsum.photos/seed/robot/800/600" loading="lazy" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                        <img src="https://images.unsplash.com/photo-1527443154391-507e9dc6c5cc?auto=format&fit=crop&w=800&q=80" loading="lazy" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
                         <div class="absolute inset-0 bg-black/5 group-hover:bg-transparent transition-colors duration-500"></div>
                     </div>
-                    <span class="text-xs font-bold text-lab-accent uppercase tracking-wider mb-2">02 — Humanoids</span>
-                    <h3 class="font-title text-2xl font-bold mb-3 group-hover:text-lab-accent transition-colors">Bipedal Locomotion</h3>
+                    <span class="text-xs font-bold text-lab-accent uppercase tracking-wider mb-2">02 — Field Robotics</span>
+                    <h3 class="font-title text-2xl font-bold mb-3 group-hover:text-lab-accent transition-colors">Autonomous Systems</h3>
                     <p class="text-sm text-lab-muted leading-relaxed line-clamp-3">
-                        Model predictive control strategies for stability on uneven terrain, focusing on energy efficiency.
+                        Encompasses the design, control, and real-world implementation of robots across diverse domains, including aerial (UAVs), marine, and off-road navigation.
                     </p>
-                </article>
+                </a>
 
-                <article class="group cursor-pointer reveal flex flex-col h-full" style="transition-delay: 200ms;">
+                <a href="/research/perception-and-vision/" class="group cursor-pointer reveal flex flex-col w-[85vw] sm:w-[350px] md:w-[400px] snap-start shrink-0 block" style="transition-delay: 200ms;">
                     <div class="relative overflow-hidden rounded-2xl aspect-[4/3] mb-6 bg-slate-100">
-                        <img src="https://picsum.photos/seed/tech/800/600" loading="lazy" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                        <img src="https://images.unsplash.com/photo-1507146153580-69a1fe6d8aa1?auto=format&fit=crop&w=800&q=80" loading="lazy" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
                         <div class="absolute inset-0 bg-black/5 group-hover:bg-transparent transition-colors duration-500"></div>
                     </div>
-                    <span class="text-xs font-bold text-lab-accent uppercase tracking-wider mb-2">03 — Haptics</span>
-                    <h3 class="font-title text-2xl font-bold mb-3 group-hover:text-lab-accent transition-colors">Soft Manipulation</h3>
+                    <span class="text-xs font-bold text-lab-accent uppercase tracking-wider mb-2">03 — Embodied AI</span>
+                    <h3 class="font-title text-2xl font-bold mb-3 group-hover:text-lab-accent transition-colors">Perception & Vision</h3>
                     <p class="text-sm text-lab-muted leading-relaxed line-clamp-3">
-                        Using pneumatic actuators and silicone skins to handle delicate objects with variable stiffness.
+                        Bridges the gap between raw sensor data and high-level reasoning using computer vision, multimodal deep learning, foundation models, and reinforcement learning.
                     </p>
-                </article>
+                </a>
+
+                <a href="/research/advanced-control/" class="group cursor-pointer reveal flex flex-col w-[85vw] sm:w-[350px] md:w-[400px] snap-start shrink-0 block" style="transition-delay: 300ms;">
+                    <div class="relative overflow-hidden rounded-2xl aspect-[4/3] mb-6 bg-slate-100">
+                        <img src="https://images.unsplash.com/photo-1581092334651-ddf26d9a09d0?auto=format&fit=crop&w=800&q=80" loading="lazy" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                        <div class="absolute inset-0 bg-black/5 group-hover:bg-transparent transition-colors duration-500"></div>
+                    </div>
+                    <span class="text-xs font-bold text-lab-accent uppercase tracking-wider mb-2">04 — Advanced Control</span>
+                    <h3 class="font-title text-2xl font-bold mb-3 group-hover:text-lab-accent transition-colors">Dynamics & Planning</h3>
+                    <p class="text-sm text-lab-muted leading-relaxed line-clamp-3">
+                        Develops the mathematical and algorithmic foundations for safe, efficient, and optimized robotic movement using model-predictive and neuroadaptive control.
+                    </p>
+                </a>
+
+                <a href="/research/human-robot-interaction/" class="group cursor-pointer reveal flex flex-col w-[85vw] sm:w-[350px] md:w-[400px] snap-start shrink-0 block" style="transition-delay: 400ms;">
+                    <div class="relative overflow-hidden rounded-2xl aspect-[4/3] mb-6 bg-slate-100">
+                        <img src="https://images.unsplash.com/photo-1593508512255-86ab42a8e620?auto=format&fit=crop&w=800&q=80" loading="lazy" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                        <div class="absolute inset-0 bg-black/5 group-hover:bg-transparent transition-colors duration-500"></div>
+                    </div>
+                    <span class="text-xs font-bold text-lab-accent uppercase tracking-wider mb-2">05 — Human-Robot Interaction</span>
+                    <h3 class="font-title text-2xl font-bold mb-3 group-hover:text-lab-accent transition-colors">Simulation & Teaming</h3>
+                    <p class="text-sm text-lab-muted leading-relaxed line-clamp-3">
+                        Explores how humans interface with, teach, and control complex robotic systems using immersive technologies, HITL learning, and mixed reality.
+                    </p>
+                </a>
+
+            </div>
+            
+            <div class="mt-8 flex justify-center md:hidden">
+                <a href="/research/" class="px-6 py-3 border border-slate-200 rounded-full text-sm font-bold text-lab-text hover:border-lab-accent hover:text-lab-accent transition-colors">
+                    View All Research Topics
+                </a>
             </div>
         </div>
     </section>

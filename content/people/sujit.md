@@ -33,7 +33,7 @@ interests:
   - "Aerial Robotics"
   - "Sensor Fusion"
   - "Optimization"
-  - "Autonoumus Robots"
+  - "Autonomous Robots"
   - "Marine Robotics"
   - "Swarm Robotics"
   - "Human Swarm Interaction"
