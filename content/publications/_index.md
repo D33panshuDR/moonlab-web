@@ -4,7 +4,7 @@ title: "Publications"
 
 ## Journals
 
-* Yogesh Kumar, Sayan Basu Roy, and P.B. Sujit: Decentralized formation control, collision avoidance and global connectivity maintenance using non-smooth barrier functions, *Robotics and Autonomous Systems*, 197: 105272, 2026.
+* Pranjal Bhatia, Sayan Basu Roy, and P.B. Sujit: Decentralized formation control, collision avoidance and global connectivity maintenance using non-smooth barrier functions, *Robotics and Autonomous Systems*, 197: 105272, 2026.
 * M. Mishra, P. Poddar, R. Agrawal, J. Chen, P. Tokekar, and P.B. Sujit: Multi-Agent Deep Reinforcement Learning for Persistent Monitoring With Sensing, Communication, and Localization Constraints, *IEEE Transactions on Automation Science and Engineering*, Vol. 22, pp. 2831-2843, 2025.
 * A. Khadatkar, P.B. Sujit, R. Agrawal, K. Vishwanath, C.P. Sawant, and A.P. Magar: WeeRo: Design, development and application of a remotely controlled robotic weeder for mechanical weeding in row crops for sustainable crop production, *Results in Engineering*, 105202, 2025.
 * Sina M. H. Hajkarim, P.B. Sujit, and Prathyush P. Menon: Optimized Mission Planning for Heterogeneous Uncrewed Vehicle Teams, *IEEE Access*, 12: 147387-147399, 2024.
