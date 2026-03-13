@@ -13,7 +13,7 @@ header:
       url: "#research"
     secondary:
       text: "Recent Publications"
-      url: "#publications"
+      url: "/publications/"
       
   image:
     src: "https://picsum.photos/seed/moonlab_hero/1920/1080" 

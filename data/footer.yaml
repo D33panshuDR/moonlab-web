@@ -1,19 +1,19 @@
 brand:
   title: "Moon Lab"
   description: "Advancing the frontiers of robust autonomy and multi-agent intelligence at the Indian Institute of Science Education and Research, Bhopal."
-  copyright: "&copy; 2025 Moon Lab <br>All rights reserved."
+  copyright: "&copy; 2026 Moon Lab <br>All rights reserved."
 
 navigation:
   heading: "Explore"
   links:
     - name: "Research Areas"
-      url: "#research"
+      url: "/research/"
     - name: "Lab Members"
-      url: "/people"
+      url: "/people/"
     - name: "Publications"
-      url: "#publications"
+      url: "/publications/"
     - name: "Open Positions"
-      url: "/contact"
+      url: "/contact/"
 
 social:
   heading: "Connect"

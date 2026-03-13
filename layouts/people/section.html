@@ -9,46 +9,92 @@
             </p>
         </div>
 
-        {{/* DATA PREPARATION*/}}
+        {{/* --- DATA PREPARATION --- */}}
         {{ $all_people := .Pages }}
         
-        {{/* Filter Faculty (To place them first) */}}
-        {{ $faculty := where $all_people "Params.group" "faculty" }}
-        {{ $faculty_sorted := $faculty.ByTitle }}
+        {{/* 1. Faculty (Professors / PI) */}}
+        {{ $faculty := where $all_people "Params.group" "eq" "faculty" }}
         
-        {{/*Filter Everyone Else (Students + Staff) */}}
-        {{/* We use 'ne' (not equal) to get everyone who is NOT faculty */}}
-        {{ $others := where $all_people "Params.group" "ne" "faculty" }}
-        {{ $others_sorted := $others.ByTitle }}
+        {{/* 2. Alumni */}}
+        {{ $alumni := (where $all_people "Params.group" "eq" "alumni").ByTitle }}
 
-        {{/*SINGLE UNIFIED GRID*/}}
-        <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-x-8 gap-y-12 reveal">
-            
-            {{/* RENDER FACULTY FIRST */}}
-            {{ range $faculty_sorted }}
-                {{/* We use 'vertical' style so they fit into the same grid as students */}}
-                {{ partial "ui/person-card.html" (dict "page" . "style" "vertical") }}
+        {{/* 3. Students / Research Group */}}
+        {{ $raw_students := where $all_people "Params.group" "eq" "student" }}
+        {{ $weighted_students := slice }}
+
+        {{ range $raw_students }}
+            {{ $role := lower .Params.role }}
+            {{ $weight := 99 }} {{/* Default for unmatched roles */}}
+
+            {{/* Assign Hierarchy Weights */}}
+            {{ if (in $role "scientist") }}
+                {{ $weight = 10 }}
+            {{ else if (in $role "phd") }}
+                {{ $weight = 20 }}
+            {{ else if (in $role "visiting") }}
+                {{ $weight = 30 }}
+            {{ else if or (in $role "staff") (in $role "assistant") (in $role "project") }}
+                {{ $weight = 40 }}
+            {{ else if (in $role "bs-ms") }}
+                {{ $weight = 50 }}
+            {{ else if (in $role "bs") }} 
+                {{ $weight = 60 }}
             {{ end }}
 
-            {{/* RENDER EVERYONE ELSE (Students & Staff mixed, alphabetical) */}}
-            {{ range $others_sorted }}
-                {{ partial "ui/person-card.html" (dict "page" . "style" "vertical") }}
-            {{ end }}
-            
-        </div>
+            {{ $weighted_students = $weighted_students | append (dict "Page" . "Weight" $weight "Title" .Title) }}
+        {{ end }}
 
-        {{/*DEBUGGING: Show Uncategorized Profiles*/}}
-        {{/* This helps catch profiles that don't have a 'group' set at all */}}
-        {{ $uncategorized := where $all_people "Params.group" "eq" nil }}
-        {{ if $uncategorized }}
-        <div class="mt-20 border-t border-red-200 pt-10">
-            <h3 class="text-red-500 font-bold mb-4">Uncategorized Profiles (Missing 'group' tag)</h3>
-            <p class="text-xs text-red-400 mb-2">These profiles won't appear above because they have no group. Add `group: student` or `group: staff` to them.</p>
-            <ul class="list-disc pl-5 text-red-400 text-sm">
-                {{ range $uncategorized }}
-                <li>{{ .Title }} (File: {{ .File.Path }})</li>
+        {{/* Sort: First by Title (Secondary), Then by Weight (Primary) */}}
+        {{ $weighted_students = sort $weighted_students "Title" "asc" }}
+        {{ $sorted_students := sort $weighted_students "Weight" "asc" }}
+
+
+        {{/* --- RENDER SECTIONS --- */}}
+
+        {{/* SECTION 1: LEADERSHIP */}}
+        {{ if $faculty }}
+        <div class="mb-20 reveal">
+            <h2 class="text-2xl font-bold text-lab-text border-b border-lab-border pb-4 mb-10 flex items-center gap-3">
+                <span class="w-2 h-8 bg-lab-accent rounded-full"></span>
+                Leadership
+            </h2>
+            <div class="grid grid-cols-1 gap-8">
+                {{ range $faculty }}
+                    {{ partial "ui/person-card.html" . }}
                 {{ end }}
-            </ul>
+            </div>
+        </div>
+        {{ end }}
+
+
+        {{/* SECTION 2: RESEARCH GROUP */}}
+        {{ if $sorted_students }}
+        <div class="mb-20 reveal">
+            <h2 class="text-2xl font-bold text-lab-text border-b border-lab-border pb-4 mb-10 flex items-center gap-3">
+                <span class="w-2 h-8 bg-slate-400 rounded-full"></span>
+                Research Group
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                {{ range $sorted_students }}
+                    {{ partial "ui/person-card.html" .Page }}
+                {{ end }}
+            </div>
+        </div>
+        {{ end }}
+
+
+        {{/* SECTION 3: ALUMNI */}}
+        {{ if $alumni }}
+        <div class="mb-20 reveal">
+            <h2 class="text-2xl font-bold text-lab-text border-b border-lab-border pb-4 mb-10 flex items-center gap-3">
+                <span class="w-2 h-8 bg-slate-200 rounded-full"></span>
+                Alumni
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6">
+                {{ range $alumni }}
+                    {{ partial "ui/person-card.html" . }}
+                {{ end }}
+            </div>
         </div>
         {{ end }}
 

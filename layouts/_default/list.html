@@ -1,0 +1,19 @@
+{{ define "main" }}
+<main class="max-w-7xl mx-auto px-6 pt-32 pb-20">
+    <h1 class="font-title text-5xl mb-8 text-lab-text">{{ .Title }}</h1>
+    
+    <div class="prose prose-slate max-w-none text-lab-muted">
+        {{ .Content }}
+    </div>
+
+    {{ if .Pages }}
+    <ul class="mt-8 space-y-2">
+        {{ range .Pages }}
+        <li>
+            <a href="{{ .Permalink }}" class="text-lab-accent font-bold hover:underline">{{ .Title }}</a>
+        </li>
+        {{ end }}
+    </ul>
+    {{ end }}
+</main>
+{{ end }}

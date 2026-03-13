@@ -5,25 +5,26 @@ description: "Whether you are a prospective student, a potential collaborator, o
 
 contact_list:
   - label: "General Inquiries"
-    email: "info@aionlab.edu"
+    email: "gshivangi@iiserb.ac.in"
   - label: "Prospective Students"
-    email: "admissions@aionlab.edu"
+    email: "sujit@iiserb.ac.in"
     note: "*Please attach CV and Transcript"
   - label: "Press & Media"
-    email: "media@aionlab.edu"
+    email: "karthik23@iiserb.ac.in"
 
 location:
-  title: "Aion Robotics Lab"
+  title: "Multi-Robot Autonomy Laboratory (MOON Lab)"
   # Using | indicates a multiline string in YAML. HTML tags are allowed here.
   address: |
-    University of Technology<br>
-    Engineering Building 4, Room 302<br>
-    123 Innovation Drive<br>
-    Cambridge, MA 02139
+    Indian Institute of Science Education and Research Bhopal (IISERB)<br>
+    Academic Building 4 (AB-4), Room 407<br>
+    Bhopal Bypass Road<br>
+    Bhopal, 462066<br>
+    Madhya Pradesh (MP)
 
 visitor_info:
   title: "Visitor Info"
-  text: "Visitor parking is available in Garage B. Please request a visitor pass from the front desk upon arrival."
+  text: "Visitor parking is available at all academic buildings. Please request a visitor pass from the front desk upon arrival."
 
 form:
   topics:
