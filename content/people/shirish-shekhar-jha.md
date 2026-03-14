@@ -3,7 +3,7 @@ title: "Shirish Shekhar Jha"
 role: "PhD"
 group: "student"
 bio: "Building scalable data and robotic systems for real-world applications."
-profile_image: "https://raw.githubusercontent.com/JustA3DObject/Images/main/MoonLab/Shirish.jpeg"
+profile_image: "/images/people/shirish-shekhar-jha.jpeg"
 interests: ["Robotic Manipulators. Multi Modal Learning"]
 contact:
   github: "https://github.com/Shirish2004"

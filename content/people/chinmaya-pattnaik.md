@@ -3,7 +3,7 @@ title: "Chinmaya Pattnaik"
 role: "PhD"
 group: "student"
 bio: "Interested in multi-agents path planning, guidance, control, visual navigation and SLAM."
-profile_image: "https://raw.githubusercontent.com/JustA3DObject/Images/main/MoonLab/Chinmay.png"
+profile_image: "/images/people/chinmaya-pattnaik.png"
 interests: ["Path Planning", "Visual Perception", "Deep Learning", "Guidance"]
 contact:
   github: "https://github.com/CHINMAYA0987"

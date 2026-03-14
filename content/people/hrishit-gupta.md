@@ -3,7 +3,7 @@ title: "Hrishit Gupta"
 role: "BS"
 group: "student"
 bio: "I am interested in robotics and working on motion planning."
-profile_image: "https://raw.githubusercontent.com/JustA3DObject/Images/main/MoonLab/Hrishit.jpg"
+profile_image: "/images/people/hrishit-gupta.jpg"
 interests: ["Motion planning"]
 contact:
   github: "https://github.com/Hrishit-Gupta"

@@ -3,7 +3,7 @@ title: "Sweta Tripathi"
 role: "PhD"
 group: "student"
 bio: "I am a research scholar with the good background in mathematics, interested in exploring and solving combat related problems of defence services."
-profile_image: "https://raw.githubusercontent.com/JustA3DObject/Images/main/MoonLab/Sweta.jpg"
+profile_image: "/images/people/sweta-tripathi.jpg"
 interests: ["Combat modelling", "Pursuit evasion games", "Optimization"]
 contact:
   github: "https://github.com/Tripathis220"
