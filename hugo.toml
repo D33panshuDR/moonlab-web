@@ -5,7 +5,7 @@ title = 'Multi Robot Autonomy Lab @ IISER Bhopal'
 [params]
   author = 'Moon Lab'
   description = 'Multi Robot Autonomy Lab @ IISER Bhopal'
-  googleAnalyticsID = 'G-XXXXXXX'
+  googleAnalyticsID = 'G-4391MGD2MB'
   logo = 'logo/moonlab.webp'
   google_fonts = [
     "Bebas Neue",
