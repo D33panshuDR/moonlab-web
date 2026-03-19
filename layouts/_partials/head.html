@@ -13,6 +13,8 @@
     <meta property="og:image" content="{{ with .Params.image }}{{ . | absURL }}{{ else }}{{ with .Site.Params.image }}{{ . | absURL }}{{ end }}{{ end }}">
     <meta property="og:url" content="{{ .Permalink }}">
     
+    {{ partial "seo.html" . }}
+    
     <link rel="canonical" href="{{ .Permalink }}">
     <link rel="icon" href="/favicon.ico">
     

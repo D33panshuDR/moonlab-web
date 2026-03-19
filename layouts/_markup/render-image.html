@@ -1,0 +1,12 @@
+{{- $url := .Destination -}}
+{{- $urlPath := strings.TrimPrefix "/" $url -}}
+{{- $img := "" -}}
+{{- if not (urls.Parse $url).IsAbs -}}
+    {{- $img = resources.Get $urlPath -}}
+{{- end -}}
+{{- if $img -}}
+    {{- $webp := $img.Resize "800x webp q80" -}}
+    <img src="{{ $webp.RelPermalink }}" alt="{{ .Text }}" width="{{ $webp.Width }}" height="{{ $webp.Height }}" loading="lazy" class="rounded-lg shadow-sm" />
+{{- else -}}
+    <img src="{{ $url | safeURL }}" alt="{{ .Text }}" loading="lazy" class="rounded-lg shadow-sm" />
+{{- end -}}

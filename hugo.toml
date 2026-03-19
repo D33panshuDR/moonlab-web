@@ -31,3 +31,6 @@ title = 'Multi Robot Autonomy Lab @ IISER Bhopal'
     disableWatch = true
     source = 'hugo_stats.json'
     target = 'assets/notwatching/hugo_stats.json'
+  [[module.mounts]]
+    source = 'static'
+    target = 'assets'

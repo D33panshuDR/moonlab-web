@@ -1,0 +1,44 @@
+{{/* Advanced SEO and JSON-LD Partial */}}
+{{- $iso8601 := "2006-01-02T15:04:05-07:00" -}}
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{ .Title }}">
+<meta name="twitter:description" content="{{ with .Description }}{{ . }}{{ else }}{{ with .Site.Params.description }}{{ . }}{{ end }}{{ end }}">
+<meta name="twitter:image" content="{{ with .Params.image }}{{ . | absURL }}{{ else }}{{ with .Site.Params.image }}{{ . | absURL }}{{ end }}{{ end }}">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "{{ site.BaseURL }}#website",
+      "url": "{{ site.BaseURL }}",
+      "name": "{{ site.Title }}",
+      "description": "{{ site.Params.description }}"
+    },
+    {
+      "@type": "{{ if .IsHome }}Organization{{ else if eq .Section "people" }}Person{{ else }}Article{{ end }}",
+      "@id": "{{ .Permalink }}#content",
+      {{ if .IsHome }}
+      "name": "{{ site.Title }}",
+      "url": "{{ site.BaseURL }}",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "{{ (printf "%s%s" site.BaseURL site.Params.logo) }}"
+      }
+      {{ else if eq .Section "people" }}
+      "name": "{{ .Title }}",
+      "image": "{{ if .Params.image }}{{ .Params.image | absURL }}{{ end }}"
+      {{ else }}
+      "headline": "{{ .Title }}",
+      "datePublished": "{{ if not .Date.IsZero }}{{ .Date.Format $iso8601 }}{{ end }}",
+      "dateModified": "{{ if not .Lastmod.IsZero }}{{ .Lastmod.Format $iso8601 }}{{ end }}",
+      "author": {
+          "@type": "Organization",
+          "name": "{{ site.Title }}"
+      }
+      {{ end }}
+    }
+  ]
+}
+</script>

@@ -1,6 +1,17 @@
+{{ $webp := "" }}
+{{ if hasPrefix .img "http" }}
+    {{ with resources.GetRemote .img }}
+        {{ $webp = (.Resize "600x webp q80").RelPermalink }}
+    {{ end }}
+{{ else }}
+    {{ $imgPath := strings.TrimPrefix "/" .img }}
+    {{ with resources.Get $imgPath }}
+        {{ $webp = (.Resize "600x webp q80").RelPermalink }}
+    {{ end }}
+{{ end }}
 <a href="{{ .link }}" class="group cursor-pointer reveal flex flex-col w-[85vw] sm:w-[350px] md:w-[400px] snap-start shrink-0 block" {{ if .delay }}style="transition-delay: {{ .delay }}ms;"{{ end }}>
     <div class="relative overflow-hidden rounded-2xl aspect-[4/3] mb-6 bg-slate-100">
-        <img src="{{ .img }}" loading="lazy" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+        <img src="{{ $webp | default .img }}" loading="lazy" alt="{{ .title }}" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
         <div class="absolute inset-0 bg-black/5 group-hover:bg-transparent transition-colors duration-500"></div>
     </div>
     <span class="text-xs font-bold text-lab-accent uppercase tracking-wider mb-2">{{ .tagline }}</span>
