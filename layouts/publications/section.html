@@ -1,0 +1,46 @@
+{{ define "main" }}
+<main class="pt-32 pb-20 max-w-5xl mx-auto px-6">
+    <h1 class="font-title text-5xl md:text-7xl mb-12 text-lab-text">{{ .Title }}</h1>
+
+    <div class="space-y-12">
+        {{ $years := slice }}
+        {{ range $k, $v := site.Data.publications }}
+            {{ if ne $k "older" }}
+                {{ $years = $years | append $k }}
+            {{ end }}
+        {{ end }}
+        
+        {{ range sort $years "value" "desc" }}
+            {{ $year := . }}
+            {{ $data := index site.Data.publications $year }}
+            <section class="reveal">
+                <h2 class="text-3xl font-bold mb-6 text-lab-accent border-b border-lab-border pb-2">{{ $year }}</h2>
+                <ul class="space-y-4">
+                    {{ range $data }}
+                    <li class="flex flex-col md:flex-row gap-4 mb-4 items-start">
+                        <span class="text-lab-muted font-mono text-xs uppercase tracking-wider shrink-0 md:w-32 pt-1">{{ .category }}</span>
+                        <div class="flex-1">
+                            <h3 class="text-lab-text text-lg font-bold mb-1 leading-snug">
+                                {{ if .link }}<a href="{{ .link }}" target="_blank" rel="noopener noreferrer" class="hover:text-lab-accent transition-colors">{{ .title }} ↗</a>{{ else }}{{ .title }}{{ end }}
+                            </h3>
+                            <div class="text-lab-muted text-sm mb-1 leading-relaxed">
+                                {{ .authors | markdownify }}
+                            </div>
+                            <div class="text-sm text-lab-muted leading-relaxed">
+                                {{ if .venue }}<span class="italic text-lab-accent">{{ .venue }}</span>{{ end }}{{ if .details }}, {{ .details }}{{ end }}
+                            </div>
+                        </div>
+                    </li>
+                    {{ end }}
+                </ul>
+            </section>
+        {{ end }}
+    </div>
+
+    <div class="mt-16 reveal border-t border-lab-border pt-12">
+        <a href="/publications/archive/" class="px-8 py-4 bg-lab-text text-white text-xs font-bold uppercase tracking-widest hover:bg-lab-accent transition-colors inline-block">
+            View Older Publications
+        </a>
+    </div>
+</main>
+{{ end }}

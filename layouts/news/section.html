@@ -1,0 +1,20 @@
+{{ define "main" }}
+<main class="pt-32 pb-20 max-w-7xl mx-auto px-6">
+    <div class="mb-20 reveal border-b border-lab-border pb-6">
+        <h1 class="font-title text-6xl md:text-8xl mb-4 text-lab-text">{{ .Title }}</h1>
+        <p class="text-lab-muted">Stay updated with research, grants, and events from Moonlab.</p>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {{ range .RegularPages }}
+        <div class="bg-white p-8 rounded-xl shadow-sm border border-slate-100 hover:shadow-md transition-all duration-300 reveal group">
+            <time class="text-xs text-lab-muted font-mono mb-4 block">{{ .Date.Format "JAN 02, 2006" }}</time>
+            <h4 class="font-bold text-lg mb-3 leading-snug group-hover:text-lab-accent transition-colors"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h4>
+            <p class="text-sm text-lab-muted leading-relaxed">
+                {{ .Summary }}
+            </p>
+        </div>
+        {{ end }}
+    </div>
+</main>
+{{ end }}

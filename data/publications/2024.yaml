@@ -1,0 +1,40 @@
+- title: Optimized Mission Planning for Heterogeneous Uncrewed Vehicle Teams
+  authors: Sina M. H. Hajkarim, **P.B. Sujit**, and Prathyush P. Menon
+  venue: IEEE Access
+  details: '12: 147387-147399, 2024.'
+  link: https://doi.org/10.1109/access.2024.3434529
+  category: Journals
+- title: Multi-AAV Cooperative Path Planning Using Nonlinear Model Predictive Control
+    With Localization Constraints
+  authors: Amith Manoharan, S.B. Roy, and **P.B. Sujit**
+  venue: IEEE Transactions on Intelligent Transportation Systems
+  details: '25(8): 9453-9466, 2024.'
+  link: https://doi.org/10.1109/tits.2024.3395514
+  category: Journals
+- title: Tracking a Planar Target Using Image-Based Visual Servoing Technique
+  authors: Yogesh Kumar, Bassam Pervez Shamsi, Sayan Basu Roy, and **P.B. Sujit**
+  venue: IEEE Transactions on Intelligent Vehicles
+  details: '9(3): 4362-4372, 2024.'
+  link: https://doi.org/10.1109/tiv.2024.3372590
+  category: Journals
+- title: 'OAS-GPUCB: On-the-way Adaptive Sampling Using GPUCB for Bathymetry Mapping'
+  authors: R. Agrawal, K. Nambiar, B. Chhaglani, M. Chitre, and **P.B. Sujit**
+  venue: IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)
+  details: '2024.'
+  link: https://doi.org/10.1109/iros58592.2024.10801947
+  category: Conferences
+- title: Deep Attention Driven Reinforcement Learning (DAD-RL) for Autonomous Vehicle
+    Decision-Making in Dynamic Environment
+  authors: Jayabrata Chowdhury, Shivaraman Venkataramanan, Sumit Dangi, and **P.B.
+    Sujit**
+  venue: ''
+  details: '2024.'
+  link: https://doi.org/10.1109/smc54092.2024.10832016
+  category: Conferences
+- title: Deep Reinforcement Learning-Based Approach for a Single Vehicle Persistent
+    Surveillance Problem with Fuel Constraints
+  authors: M. Mishra, H. Bana, S. Sarkar, S. Sanjeevi, **P.B. Sujit**, and K. Sundar
+  venue: arXiv preprint arXiv:2404.06423
+  details: '2024.'
+  link: https://doi.org/10.20944/preprints202411.2377.v1
+  category: Conferences

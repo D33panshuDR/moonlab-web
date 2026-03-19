@@ -16,65 +16,17 @@
 
            <div class="flex overflow-x-auto snap-x snap-mandatory gap-6 pb-8 -mx-6 px-6 md:mx-0 md:px-0">
                 
-                <a href="/research/swarm-intelligence/" class="group cursor-pointer reveal flex flex-col w-[85vw] sm:w-[350px] md:w-[400px] snap-start shrink-0 block">
-                    <div class="relative overflow-hidden rounded-2xl aspect-[4/3] mb-6 bg-slate-100">
-                        <img src="https://images.unsplash.com/photo-1508614589041-895b88991e3e?auto=format&fit=crop&w=800&q=80" loading="lazy" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
-                        <div class="absolute inset-0 bg-black/5 group-hover:bg-transparent transition-colors duration-500"></div>
-                    </div>
-                    <span class="text-xs font-bold text-lab-accent uppercase tracking-wider mb-2">01 — Swarm Intelligence</span>
-                    <h3 class="font-title text-2xl font-bold mb-3 group-hover:text-lab-accent transition-colors">Multi-Robot Systems</h3>
-                    <p class="text-sm text-lab-muted leading-relaxed line-clamp-3">
-                        Focuses on the coordination and decision-making of distributed robotic teams, including cooperative control, swarm navigation, and pursuit-evasion games.
-                    </p>
-                </a>
-
-                <a href="/research/field-robotics/" class="group cursor-pointer reveal flex flex-col w-[85vw] sm:w-[350px] md:w-[400px] snap-start shrink-0 block" style="transition-delay: 100ms;">
-                    <div class="relative overflow-hidden rounded-2xl aspect-[4/3] mb-6 bg-slate-100">
-                        <img src="https://images.unsplash.com/photo-1527443154391-507e9dc6c5cc?auto=format&fit=crop&w=800&q=80" loading="lazy" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
-                        <div class="absolute inset-0 bg-black/5 group-hover:bg-transparent transition-colors duration-500"></div>
-                    </div>
-                    <span class="text-xs font-bold text-lab-accent uppercase tracking-wider mb-2">02 — Field Robotics</span>
-                    <h3 class="font-title text-2xl font-bold mb-3 group-hover:text-lab-accent transition-colors">Autonomous Systems</h3>
-                    <p class="text-sm text-lab-muted leading-relaxed line-clamp-3">
-                        Encompasses the design, control, and real-world implementation of robots across diverse domains, including aerial (UAVs), marine, and off-road navigation.
-                    </p>
-                </a>
-
-                <a href="/research/perception-and-vision/" class="group cursor-pointer reveal flex flex-col w-[85vw] sm:w-[350px] md:w-[400px] snap-start shrink-0 block" style="transition-delay: 200ms;">
-                    <div class="relative overflow-hidden rounded-2xl aspect-[4/3] mb-6 bg-slate-100">
-                        <img src="https://images.unsplash.com/photo-1507146153580-69a1fe6d8aa1?auto=format&fit=crop&w=800&q=80" loading="lazy" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
-                        <div class="absolute inset-0 bg-black/5 group-hover:bg-transparent transition-colors duration-500"></div>
-                    </div>
-                    <span class="text-xs font-bold text-lab-accent uppercase tracking-wider mb-2">03 — Embodied AI</span>
-                    <h3 class="font-title text-2xl font-bold mb-3 group-hover:text-lab-accent transition-colors">Perception & Vision</h3>
-                    <p class="text-sm text-lab-muted leading-relaxed line-clamp-3">
-                        Bridges the gap between raw sensor data and high-level reasoning using computer vision, multimodal deep learning, foundation models, and reinforcement learning.
-                    </p>
-                </a>
-
-                <a href="/research/advanced-control/" class="group cursor-pointer reveal flex flex-col w-[85vw] sm:w-[350px] md:w-[400px] snap-start shrink-0 block" style="transition-delay: 300ms;">
-                    <div class="relative overflow-hidden rounded-2xl aspect-[4/3] mb-6 bg-slate-100">
-                        <img src="https://images.unsplash.com/photo-1581092334651-ddf26d9a09d0?auto=format&fit=crop&w=800&q=80" loading="lazy" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
-                        <div class="absolute inset-0 bg-black/5 group-hover:bg-transparent transition-colors duration-500"></div>
-                    </div>
-                    <span class="text-xs font-bold text-lab-accent uppercase tracking-wider mb-2">04 — Advanced Control</span>
-                    <h3 class="font-title text-2xl font-bold mb-3 group-hover:text-lab-accent transition-colors">Dynamics & Planning</h3>
-                    <p class="text-sm text-lab-muted leading-relaxed line-clamp-3">
-                        Develops the mathematical and algorithmic foundations for safe, efficient, and optimized robotic movement using model-predictive and neuroadaptive control.
-                    </p>
-                </a>
-
-                <a href="/research/human-robot-interaction/" class="group cursor-pointer reveal flex flex-col w-[85vw] sm:w-[350px] md:w-[400px] snap-start shrink-0 block" style="transition-delay: 400ms;">
-                    <div class="relative overflow-hidden rounded-2xl aspect-[4/3] mb-6 bg-slate-100">
-                        <img src="https://images.unsplash.com/photo-1593508512255-86ab42a8e620?auto=format&fit=crop&w=800&q=80" loading="lazy" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
-                        <div class="absolute inset-0 bg-black/5 group-hover:bg-transparent transition-colors duration-500"></div>
-                    </div>
-                    <span class="text-xs font-bold text-lab-accent uppercase tracking-wider mb-2">05 — Human-Robot Interaction</span>
-                    <h3 class="font-title text-2xl font-bold mb-3 group-hover:text-lab-accent transition-colors">Simulation & Teaming</h3>
-                    <p class="text-sm text-lab-muted leading-relaxed line-clamp-3">
-                        Explores how humans interface with, teach, and control complex robotic systems using immersive technologies, HITL learning, and mixed reality.
-                    </p>
-                </a>
+                {{ $research := slice 
+                    (dict "link" "/research/swarm-intelligence/" "img" "https://images.unsplash.com/photo-1508614589041-895b88991e3e?auto=format&fit=crop&w=800&q=80" "tagline" "01 — Swarm Intelligence" "title" "Multi-Robot Systems" "desc" "Focuses on the coordination and decision-making of distributed robotic teams, including cooperative control, swarm navigation, and pursuit-evasion games." "delay" 0)
+                    (dict "link" "/research/field-robotics/" "img" "https://images.unsplash.com/photo-1527443154391-507e9dc6c5cc?auto=format&fit=crop&w=800&q=80" "tagline" "02 — Field Robotics" "title" "Autonomous Systems" "desc" "Encompasses the design, control, and real-world implementation of robots across diverse domains, including aerial (UAVs), marine, and off-road navigation." "delay" 100)
+                    (dict "link" "/research/perception-and-vision/" "img" "https://images.unsplash.com/photo-1507146153580-69a1fe6d8aa1?auto=format&fit=crop&w=800&q=80" "tagline" "03 — Embodied AI" "title" "Perception & Vision" "desc" "Bridges the gap between raw sensor data and high-level reasoning using computer vision, multimodal deep learning, foundation models, and reinforcement learning." "delay" 200)
+                    (dict "link" "/research/advanced-control/" "img" "https://images.unsplash.com/photo-1581092334651-ddf26d9a09d0?auto=format&fit=crop&w=800&q=80" "tagline" "04 — Advanced Control" "title" "Dynamics & Planning" "desc" "Develops the mathematical and algorithmic foundations for safe, efficient, and optimized robotic movement using model-predictive and neuroadaptive control." "delay" 300)
+                    (dict "link" "/research/human-robot-interaction/" "img" "https://images.unsplash.com/photo-1593508512255-86ab42a8e620?auto=format&fit=crop&w=800&q=80" "tagline" "05 — Human-Robot Interaction" "title" "Simulation & Teaming" "desc" "Explores how humans interface with, teach, and control complex robotic systems using immersive technologies, HITL learning, and mixed reality." "delay" 400)
+                }}
+                
+                {{ range $research }}
+                    {{ partial "ui/research-card.html" . }}
+                {{ end }}
 
             </div>
             
@@ -94,29 +46,15 @@
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div class="bg-white p-8 rounded-xl shadow-sm border border-slate-100 hover:shadow-md transition-all duration-300 reveal group">
-                    <time class="text-xs text-lab-muted font-mono mb-4 block">DEC 08, 2025</time>
-                    <h4 class="font-bold text-lg mb-3 leading-snug group-hover:text-lab-accent transition-colors">New Grant: Undersea Exploration</h4>
+                {{ range $index, $element := first 3 (where site.RegularPages "Type" "news") }}
+                <div class="bg-white p-8 rounded-xl shadow-sm border border-slate-100 hover:shadow-md transition-all duration-300 reveal group" {{ if gt $index 0 }}style="transition-delay: {{ mul $index 100 }}ms;"{{ end }}>
+                    <time class="text-xs text-lab-muted font-mono mb-4 block">{{ .Date.Format "JAN 02, 2006" }}</time>
+                    <h4 class="font-bold text-lg mb-3 leading-snug group-hover:text-lab-accent transition-colors"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h4>
                     <p class="text-sm text-lab-muted leading-relaxed">
-                        $1.2M grant awarded to develop autonomous maintenance robots for underwater data cables.
+                        {{ .Summary }}
                     </p>
                 </div>
-
-                <div class="bg-white p-8 rounded-xl shadow-sm border border-slate-100 hover:shadow-md transition-all duration-300 reveal group" style="transition-delay: 100ms;">
-                    <time class="text-xs text-lab-muted font-mono mb-4 block">NOV 22, 2025</time>
-                    <h4 class="font-bold text-lg mb-3 leading-snug group-hover:text-lab-accent transition-colors">Keynote at ROSCon 2025</h4>
-                    <p class="text-sm text-lab-muted leading-relaxed">
-                        Lead researcher discussed the future of open-source middleware in industrial robotics.
-                    </p>
-                </div>
-
-                <div class="bg-white p-8 rounded-xl shadow-sm border border-slate-100 hover:shadow-md transition-all duration-300 reveal group" style="transition-delay: 200ms;">
-                    <time class="text-xs text-lab-muted font-mono mb-4 block">OCT 15, 2025</time>
-                    <h4 class="font-bold text-lg mb-3 leading-snug group-hover:text-lab-accent transition-colors">Hiring: PhD Candidate</h4>
-                    <p class="text-sm text-lab-muted leading-relaxed">
-                        Accepting applications for a PhD position focused on Computer Vision and Edge AI.
-                    </p>
-                </div>
+                {{ end }}
             </div>
         </div>
     </section>

@@ -1,0 +1,12 @@
+{{ define "main" }}
+<main class="pt-32 pb-20 max-w-4xl mx-auto px-6">
+    <div class="mb-8 border-b border-lab-border pb-8 reveal">
+        <time class="text-sm text-lab-accent font-mono mb-4 block">{{ .Date.Format "January 2, 2006" }}</time>
+        <h1 class="font-title text-4xl md:text-6xl mb-6 text-lab-text">{{ .Title }}</h1>
+        <a href="/news/" class="text-xs font-bold text-lab-muted uppercase tracking-widest hover:text-lab-accent">← All News</a>
+    </div>
+    <div class="prose prose-slate max-w-none text-lab-text reveal">
+        {{ .Content }}
+    </div>
+</main>
+{{ end }}

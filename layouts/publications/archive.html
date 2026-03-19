@@ -1,0 +1,32 @@
+{{ define "main" }}
+<main class="pt-32 pb-20 max-w-5xl mx-auto px-6">
+    <h1 class="font-title text-5xl md:text-7xl mb-12 text-lab-text">{{ .Title }}</h1>
+    
+    <div class="mb-4">
+        <a href="/publications/" class="text-xs font-bold text-lab-accent uppercase tracking-widest hover:underline">← Back to Recent Publications</a>
+    </div>
+
+    <div class="space-y-12">
+        <section class="reveal">
+            <ul class="space-y-4">
+                {{ range site.Data.publications.older }}
+                <li class="flex flex-col md:flex-row gap-4 mb-4 items-start">
+                    <span class="text-lab-muted font-mono text-xs uppercase tracking-wider shrink-0 md:w-32 pt-1">{{ .category }}</span>
+                    <div class="flex-1">
+                        <h3 class="text-lab-text text-lg font-bold mb-1 leading-snug">
+                            {{ if .link }}<a href="{{ .link }}" target="_blank" rel="noopener noreferrer" class="hover:text-lab-accent transition-colors">{{ .title }} ↗</a>{{ else }}{{ .title }}{{ end }}
+                        </h3>
+                        <div class="text-lab-muted text-sm mb-1 leading-relaxed">
+                            {{ .authors | markdownify }}
+                        </div>
+                        <div class="text-sm text-lab-muted leading-relaxed">
+                            {{ if .venue }}<span class="italic text-lab-accent">{{ .venue }}</span>{{ end }}{{ if .details }}, {{ .details }}{{ end }}
+                        </div>
+                    </div>
+                </li>
+                {{ end }}
+            </ul>
+        </section>
+    </div>
+</main>
+{{ end }}

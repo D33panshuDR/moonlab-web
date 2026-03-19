@@ -8,8 +8,8 @@ title = 'Multi Robot Autonomy Lab @ IISER Bhopal'
   googleAnalyticsID = 'G-4391MGD2MB'
   logo = 'logo/moonlab.webp'
   google_fonts = [
-    "Bebas Neue",
-    "Fira Code:wght@300;400;500;600"
+    "Inter:wght@300;400;500;600",
+    "Manrope:wght@400;500;700;800"
   ]
 
 
