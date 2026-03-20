@@ -1,13 +1,14 @@
+items:
 - title: Multi-Agent Deep Reinforcement Learning for Persistent Monitoring With Sensing,
     Communication, and Localization Constraints
-  authors: M. Mishra, P. Poddar, R. Agrawal, J. Chen, P. Tokekar, and **P.B. Sujit**
+  authors: M. Mishra, **P. Poddar**, **R. Agrawal**, J. Chen, P. Tokekar, and **P.B. Sujit**
   venue: IEEE Transactions on Automation Science and Engineering
   details: Vol. 22, pp. 2831-2843, 2025.
   link: https://doi.org/10.1109/tase.2024.3385412
   category: Journals
 - title: 'WeeRo: Design, development and application of a remotely controlled robotic
     weeder for mechanical weeding in row crops for sustainable crop production'
-  authors: A. Khadatkar, **P.B. Sujit**, R. Agrawal, K. Vishwanath, C.P. Sawant, and
+  authors: A. Khadatkar, **P.B. Sujit**, **R. Agrawal**, **K. Vishwanath**, C.P. Sawant, and
     A.P. Magar
   venue: Results in Engineering
   details: 105202, 2025.
@@ -22,7 +23,7 @@
   category: Conferences
 - title: 'AnyTraverse: An off-road traversability framework with VLM and human operator
     in the loop'
-  authors: Sattwik Sahu, Agamdeep Singh, Karthik Nambiar, Srikanth Saripalli, and
+  authors: Sattwik Sahu, **Agamdeep Singh**, **Karthik Nambiar**, Srikanth Saripalli, and
     **P.B. Sujit**
   venue: CoRR abs/2506.16826
   details: '2025.'

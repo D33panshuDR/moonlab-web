@@ -1,3 +1,4 @@
+items:
 - title: Optimized Mission Planning for Heterogeneous Uncrewed Vehicle Teams
   authors: Sina M. H. Hajkarim, **P.B. Sujit**, and Prathyush P. Menon
   venue: IEEE Access
@@ -12,13 +13,13 @@
   link: https://doi.org/10.1109/tits.2024.3395514
   category: Journals
 - title: Tracking a Planar Target Using Image-Based Visual Servoing Technique
-  authors: Yogesh Kumar, Bassam Pervez Shamsi, Sayan Basu Roy, and **P.B. Sujit**
+  authors: Yogesh Kumar, **Bassam Pervez Shamsi**, Sayan Basu Roy, and **P.B. Sujit**
   venue: IEEE Transactions on Intelligent Vehicles
   details: '9(3): 4362-4372, 2024.'
   link: https://doi.org/10.1109/tiv.2024.3372590
   category: Journals
 - title: 'OAS-GPUCB: On-the-way Adaptive Sampling Using GPUCB for Bathymetry Mapping'
-  authors: R. Agrawal, K. Nambiar, B. Chhaglani, M. Chitre, and **P.B. Sujit**
+  authors: R. Agrawal, **K. Nambiar**, B. Chhaglani, M. Chitre, and **P.B. Sujit**
   venue: IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)
   details: '2024.'
   link: https://doi.org/10.1109/iros58592.2024.10801947

@@ -16,7 +16,7 @@
             <section class="reveal">
                 <h2 class="text-3xl font-bold mb-6 text-lab-accent border-b border-lab-border pb-2">{{ $year }}</h2>
                 <ul class="space-y-4">
-                    {{ range $data }}
+                    {{ range $data.items }}
                     <li class="flex flex-col md:flex-row gap-4 mb-4 items-start">
                         <span class="text-lab-muted font-mono text-xs uppercase tracking-wider shrink-0 md:w-32 pt-1">{{ .category }}</span>
                         <div class="flex-1">

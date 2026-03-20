@@ -1,0 +1,117 @@
+backend:
+  name: gitlab
+  repo: deepu/moonlab-web
+  base_url: "http://172.28.129.5:8929/"
+  api_root: "http://172.28.129.5:8929/api/v4"
+  #name: "test-repo"
+
+
+
+media_folder: "static/images"
+public_folder: "/images"
+
+collections:
+  - name: "news"
+    label: "News"
+    folder: "content/news"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Date", name: "date", widget: "datetime"}
+      - {label: "Summary", name: "summary", widget: "text"}
+      - {label: "Body", name: "body", widget: "markdown"}
+
+  - name: "research"
+    label: "Research Areas"
+    folder: "content/research"
+    create: true
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Body", name: "body", widget: "markdown"}
+
+  - name: "people"
+    label: "People"
+    folder: "content/people"
+    create: true
+    fields:
+      - {label: "Title (Name)", name: "title", widget: "string"}
+      - {label: "Role", name: "role", widget: "string"}
+      - {label: "Group", name: "group", widget: "select", options: ["faculty", "postdoc", "phd", "ms", "alumni", "student"]}
+      - {label: "Bio", name: "bio", widget: "text", required: false}
+      - {label: "Profile Image", name: "profile_image", widget: "image", required: false}
+      - {label: "Interests", name: "interests", widget: "list", required: false}
+      - label: "Contact"
+        name: "contact"
+        widget: "object"
+        required: false
+        fields:
+          - {label: "Email", name: "email", widget: "string", required: false}
+          - {label: "GitHub", name: "github", widget: "string", required: false}
+          - {label: "LinkedIn", name: "linkedin", widget: "string", required: false}
+          - {label: "Google Scholar", name: "scholar", widget: "string", required: false}
+      - label: "Status"
+        name: "status"
+        widget: "object"
+        required: false
+        fields:
+          - {label: "Available", name: "available", widget: "boolean", default: false}
+          - {label: "Text", name: "text", widget: "string", required: false}
+      - label: "Updates"
+        name: "updates"
+        widget: "list"
+        required: false
+        fields:
+          - {label: "Date", name: "date", widget: "string"}
+          - {label: "Text", name: "text", widget: "markdown"}
+          - {label: "Highlight", name: "highlight", widget: "boolean", default: false}
+      - label: "Papers"
+        name: "papers"
+        widget: "list"
+        required: false
+        fields:
+          - {label: "Title", name: "title", widget: "string"}
+          - {label: "Authors", name: "authors", widget: "markdown"}
+          - {label: "Venue", name: "venue", widget: "string"}
+          - {label: "Venue Style", name: "venue_style", widget: "select", default: "muted", options: ["accent", "muted"]}
+          - label: "Links"
+            name: "links"
+            widget: "object"
+            required: false
+            fields:
+              - {label: "PDF", name: "pdf", widget: "string", required: false}
+              - {label: "Code", name: "code", widget: "string", required: false}
+      - label: "Teaching"
+        name: "teaching"
+        widget: "list"
+        required: false
+        fields:
+          - {label: "Course", name: "course", widget: "string"}
+          - {label: "Term", name: "term", widget: "string"}
+      - label: "Service"
+        name: "service"
+        widget: "list"
+        required: false
+        fields:
+          - {label: "Role", name: "role", widget: "string"}
+          - {label: "Organization", name: "org", widget: "string"}
+      - {label: "Gallery", name: "gallery", widget: "list", required: false}
+      - {label: "Body", name: "body", widget: "markdown", required: false}
+
+  - name: "publications"
+    label: "Publications YAML Data"
+    format: "yaml"
+    extension: "yaml"
+    folder: "data/publications"
+    create: true
+    fields:
+      - name: "items"
+        label: "Publications"
+        widget: "list"
+        fields:
+          - {label: "Title", name: "title", widget: "string"}
+          - {label: "Authors", name: "authors", widget: "markdown"}
+          - {label: "Venue", name: "venue", widget: "string"}
+          - {label: "Details", name: "details", widget: "string", required: false}
+          - {label: "Link", name: "link", widget: "string", required: false}
+          - {label: "Category", name: "category", widget: "string", required: false}
