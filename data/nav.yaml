@@ -7,21 +7,21 @@ menu:
   - name: "Research"
     url: "#research"
     children:
-      - name: "Active Projects"
-        url: "/active-projects/"
+      - name: "Projects"
+        url: "/research/"
       - name: "Publications"
         url: "/publications/"
       - name: "Facilities"
         url: "/facilities/"
         
   - name: "News"
-    url: "#updates"
+    url: "/news/"
     
   - name: "Team"
     url: "/people"
     
-  - name: "Join Us"
-    url: "/contact"
+  - name: "Gallery"
+    url: "/gallery/"
 
 cta:
   enable: true
