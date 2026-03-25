@@ -1,0 +1,41 @@
+categories:
+  - name: "Unmanned Ground Vehicles (UGV)"
+    facilities:
+      - title: "RHINO"
+        description: "A rugged,modular, outdoor-ready unmanned ground vehicle designed for rapid prototyping of field robotics applications."
+        image: "/images/facilities/rhino.jpeg"
+        specs:
+          - label: "Max Speed"
+            value: "10.0 m/s"
+          - label: "Payload"
+            value: "75 kg"
+          - label: "Weight"
+            value: "50 kg"
+      - title: "Unitree Go2"
+        description: "An advanced quadruped robot for dynamic locomotion and embodied AI research."
+        # image: "https://picsum.photos/seed/unitree/800/600"
+        specs:
+          - label: "Max Speed"
+            value: "2.5 m/s"
+          - label: "Payload"
+            value: "7 kg"
+  - name: "Unmanned Aerial Vehicles (UAV)"
+    facilities:
+      - title: "DJI Matrice 300 RTK"
+        description: "A commercial drone platform that takes inspiration from modern aviation systems, providing advanced AI capabilities."
+        # image: "https://picsum.photos/seed/matrice/800/600"
+        specs:
+          - label: "Max Flight Time"
+            value: "55 mins"
+          - label: "Payload"
+            value: "2.7 kg"
+  - name: "Robotic Manipulators"
+    facilities:
+      - title: "Agilex Piper"
+        # description: "A versatile robotic arm designed for research and industrial applications, known for its precision and ease of use."
+        # # image: "https://picsum.photos/seed/panda/800/600"
+        # specs:
+        #   - label: "Degrees of Freedom"
+        #     value: "7"
+        #   - label: "Payload"
+        #     value: "3 kg"

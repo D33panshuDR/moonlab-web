@@ -1,0 +1,50 @@
+{{ define "main" }}
+<main class="max-w-7xl mx-auto px-6 pt-32 pb-20">
+    <h1 class="font-title text-4xl md:text-5xl font-bold mb-8 text-lab-text">{{ .Title }}</h1>
+    
+    {{ with .Content }}
+    <div class="prose prose-slate max-w-none text-lg text-lab-muted mb-16">
+        {{ . }}
+    </div>
+    {{ end }}
+
+    <div class="space-y-24">
+        {{ range site.Data.facilities.categories }}
+        <section>
+            <h2 class="font-title text-3xl font-bold text-lab-text mb-8 border-b border-lab-border pb-2">{{ .name }}</h2>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                {{ range .facilities }}
+                <div class="bg-white rounded-xl shadow-[0_2px_10px_-3px_rgba(6,81,237,0.1)] border border-slate-100 overflow-hidden hover:shadow-[0_8px_30px_-5px_rgba(6,81,237,0.15)] transition-shadow duration-300">
+                    {{ if .image }}
+                    <div class="w-full h-72 overflow-hidden bg-slate-100">
+                        <img src="{{ .image }}" alt="{{ .title }}" class="w-full h-full object-cover">
+                    </div>
+                    {{ end }}
+                    
+                    <div class="p-8">
+                        <h3 class="font-bold text-2xl mb-3 text-lab-text">{{ .title }}</h3>
+                        <p class="text-lab-muted mb-8 leading-relaxed">{{ .description }}</p>
+                        
+                        {{ if .specs }}
+                        <div class="bg-slate-50 p-6 rounded-lg border border-slate-100">
+                            <h4 class="text-xs font-bold tracking-wider uppercase mb-4 text-lab-accent">Specifications</h4>
+                            <dl class="space-y-3 text-sm">
+                                {{ range .specs }}
+                                <div class="grid grid-cols-3 gap-4 border-b border-slate-200/60 last:border-0 pb-3 last:pb-0">
+                                    <dt class="font-bold text-slate-700">{{ .label }}</dt>
+                                    <dd class="col-span-2 text-slate-600">{{ .value }}</dd>
+                                </div>
+                                {{ end }}
+                            </dl>
+                        </div>
+                        {{ end }}
+                    </div>
+                </div>
+                {{ end }}
+            </div>
+        </section>
+        {{ end }}
+    </div>
+</main>
+{{ end }}

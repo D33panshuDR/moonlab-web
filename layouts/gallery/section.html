@@ -1,0 +1,25 @@
+{{ define "main" }}
+<main class="max-w-7xl mx-auto px-6 pt-32 pb-20">
+    <h1 class="font-title text-4xl md:text-5xl font-bold mb-8 text-lab-text">{{ .Title }}</h1>
+    
+    {{ with .Content }}
+    <div class="prose prose-slate max-w-none text-lg text-lab-muted mb-12">
+        {{ . }}
+    </div>
+    {{ end }}
+
+    <div class="columns-1 sm:columns-2 lg:columns-3 gap-6 space-y-6">
+        {{ range site.Data.gallery.images }}
+        <figure class="break-inside-avoid relative group rounded-2xl overflow-hidden shadow-sm border border-slate-100 hover:shadow-lg transition-all duration-300 bg-slate-100">
+            <img src="{{ .image }}" alt="{{ .caption }}" class="w-full h-auto object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out">
+            <figcaption class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                <p class="text-white font-medium text-lg mb-2">{{ .caption }}</p>
+                {{ if .date }}
+                <time class="text-white/70 font-mono text-xs">{{ time.Format "Jan 02, 2006" .date }}</time>
+                {{ end }}
+            </figcaption>
+        </figure>
+        {{ end }}
+    </div>
+</main>
+{{ end }}
