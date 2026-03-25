@@ -15,7 +15,28 @@ backend:
 media_folder: "static/images"
 public_folder: "/images"
 
+singletons:
+  - name: "home"
+    label: "Home Page Settings"
+    file: "data/home.yaml"
+    fields:
+      - {label: "Header", name: "header", widget: "object", fields: [{label: "Tagline", name: "tagline", widget: "string"}, {label: "Heading", name: "heading", widget: "object", fields: [{label: "Line 1", name: "line1", widget: "string"}, {label: "Line 2", name: "line2", widget: "string"}]}, {label: "Description", name: "description", widget: "text"}, {label: "Buttons", name: "buttons", widget: "object", fields: [{label: "Primary", name: "primary", widget: "object", fields: [{label: "Text", name: "text", widget: "string"}, {label: "URL", name: "url", widget: "string"}]}, {label: "Secondary", name: "secondary", widget: "object", fields: [{label: "Text", name: "text", widget: "string"}, {label: "URL", name: "url", widget: "string"}]}]}, {label: "Image", name: "image", widget: "object", fields: [{label: "Source", name: "src", widget: "string"}, {label: "Alt", name: "alt", widget: "string"}]}]}
+  - name: "footer"
+    label: "Footer Settings"
+    file: "data/footer.yaml"
+    fields:
+      - {label: "Brand", name: "brand", widget: "object", fields: [{label: "Title", name: "title", widget: "string"}, {label: "Description", name: "description", widget: "text"}, {label: "Copyright", name: "copyright", widget: "string"}]}
+      - {label: "Navigation", name: "navigation", widget: "object", fields: [{label: "Heading", name: "heading", widget: "string"}, {label: "Links", name: "links", widget: "list", fields: [{label: "Name", name: "name", widget: "string"}, {label: "URL", name: "url", widget: "string"}]}]}
+      - {label: "Social", name: "social", widget: "object", fields: [{label: "Heading", name: "heading", widget: "string"}, {label: "Links", name: "links", widget: "list", fields: [{label: "Name", name: "name", widget: "string"}, {label: "URL", name: "url", widget: "string"}, {label: "SVG Path", name: "svg_path", widget: "text"}]}]}
+  - name: "nav"
+    label: "Navigation Menu"
+    file: "data/nav.yaml"
+    fields:
+      - {label: "Menu Items", name: "menu", widget: "list", fields: [{label: "Name", name: "name", widget: "string"}, {label: "URL", name: "url", widget: "string"}, {label: "Weight", name: "weight", widget: "number", required: false}, {label: "Children", name: "children", widget: "list", required: false, fields: [{label: "Name", name: "name", widget: "string"}, {label: "URL", name: "url", widget: "string"}]}]}
+      - {label: "Call to Action", name: "cta", widget: "object", fields: [{label: "Enable", name: "enable", widget: "boolean"}, {label: "Text", name: "text", widget: "string"}, {label: "URL", name: "url", widget: "string"}]}
+
 collections:
+
   - name: "news"
     label: "News"
     folder: "content/news"
@@ -108,6 +129,7 @@ collections:
     format: "yaml"
     extension: "yaml"
     folder: "data/publications"
+    summary: "{{filename}}"
     create: true
     fields:
       - name: "items"
