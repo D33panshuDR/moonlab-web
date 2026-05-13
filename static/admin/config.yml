@@ -1,6 +1,6 @@
 backend:
   name: gitlab
-  repo: deepu/moonlab-web
+  repo: moonlab/moonlab-web
   base_url: "http://172.28.129.5:8929/"
   api_root: "http://172.28.129.5:8929/api/v4"
   auth_type: "pkce"
