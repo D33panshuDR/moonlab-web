@@ -9,8 +9,8 @@
         {{ $webp = (.Resize "600x webp q80").RelPermalink }}
     {{ end }}
 {{ end }}
-<a href="{{ .link }}" class="group cursor-pointer reveal flex flex-col w-[85vw] sm:w-[350px] md:w-[400px] snap-start shrink-0 block" {{ if .delay }}style="transition-delay: {{ .delay }}ms;"{{ end }}>
-    <div class="relative overflow-hidden rounded-2xl aspect-[4/3] mb-6 bg-slate-100">
+<a href="{{ .link }}" class="group cursor-pointer reveal flex flex-col h-full bg-white border border-slate-100 rounded-2xl p-6 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 block" {{ if .delay }}style="transition-delay: {{ .delay }}ms;"{{ end }}>
+    <div class="relative overflow-hidden rounded-xl aspect-[4/3] mb-6 bg-slate-100">
         <img src="{{ $webp | default .img }}" loading="lazy" alt="{{ .title }}" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
         <div class="absolute inset-0 bg-black/5 group-hover:bg-transparent transition-colors duration-500"></div>
     </div>
