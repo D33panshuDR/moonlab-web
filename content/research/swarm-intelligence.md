@@ -1,6 +1,7 @@
 ---
 title: "Swarm Intelligence & Multi-Robot Systems"
 tagline: "01 — Swarm Intelligence"
+tags: ["Swarm Robotics"]
 featured: true
 image: "https://images.unsplash.com/photo-1508614589041-895b88991e3e?auto=format&fit=crop&w=800&q=80"
 summary: "Focuses on the coordination and decision-making of distributed robotic teams, including cooperative control, swarm navigation, and pursuit-evasion games."

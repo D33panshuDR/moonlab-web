@@ -2,6 +2,7 @@
 title: "Dr. Sujit P.B."
 role: "Principal Investigator"
 group: "faculty"
+tags: ["Offroad Navigation", "Swarm Robotics"]
 date: "2025-11-01"
 category: "leadership"
 bio: "HOD EECS IISER Bhopal"

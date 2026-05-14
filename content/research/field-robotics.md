@@ -1,6 +1,7 @@
 ---
 title: "Field Robotics & Autonomous Systems"
 tagline: "02 — Field Robotics"
+tags: ["Offroad Navigation"]
 featured: true
 image: "https://images.unsplash.com/photo-1527443154391-507e9dc6c5cc?auto=format&fit=crop&w=800&q=80"
 summary: "Encompasses the design, control, and real-world implementation of robots across diverse domains, including aerial (UAVs), marine, and off-road navigation."

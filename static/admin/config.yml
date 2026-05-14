@@ -95,6 +95,7 @@ collections:
       - {label: "Image", name: "image", widget: "image", required: false}
       - {label: "Summary", name: "summary", widget: "text", required: false}
       - {label: "Weight", name: "weight", widget: "number", default: 100}
+      - {label: "Tags", name: "tags", widget: "list", required: false}
       - {label: "Body", name: "body", widget: "markdown"}
 
   - name: "people"
@@ -163,6 +164,7 @@ collections:
           - {label: "Role", name: "role", widget: "string"}
           - {label: "Organization", name: "org", widget: "string"}
       - {label: "Gallery", name: "gallery", widget: "list", required: false}
+      - {label: "Tags", name: "tags", widget: "list", required: false}
       - {label: "Body", name: "body", widget: "markdown", required: false}
 
   - name: "publications"

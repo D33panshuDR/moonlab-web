@@ -1,0 +1,45 @@
+{{ define "main" }}
+<main class="max-w-7xl mx-auto px-6 pt-32 pb-24">
+    
+    <div class="mb-12 reveal">
+        <div class="inline-flex items-center gap-2 px-3 py-1 mb-6 rounded-full bg-slate-100 border border-slate-200">
+            <span class="w-2 h-2 rounded-full bg-lab-accent"></span>
+            <span class="text-[11px] font-bold text-lab-text uppercase tracking-widest">Tag</span>
+        </div>
+        <h1 class="font-title text-5xl md:text-7xl font-bold text-lab-text capitalize">{{ .Data.Term }}</h1>
+    </div>
+
+    <div class="space-y-20">
+        {{ $research := where .Pages "Type" "research" }}
+        {{ if $research }}
+        <section class="reveal">
+            <h2 class="font-title text-3xl font-bold text-lab-text border-b border-lab-border pb-4 mb-8 flex items-center gap-3">
+                <span class="w-2 h-8 bg-lab-accent rounded-full"></span>
+                Research Projects
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {{ range $index, $page := $research }}
+                    {{ partial "ui/research-card.html" (dict "Page" $page "delay" (mul $index 100)) }}
+                {{ end }}
+            </div>
+        </section>
+        {{ end }}
+
+        {{ $people := where .Pages "Type" "people" }}
+        {{ if $people }}
+        <section class="reveal">
+            <h2 class="font-title text-3xl font-bold text-lab-text border-b border-lab-border pb-4 mb-8 flex items-center gap-3">
+                <span class="w-2 h-8 bg-slate-400 rounded-full"></span>
+                People
+            </h2>
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
+                {{ range $people }}
+                    {{ partial "ui/person-card.html" (dict "Page" . "compact" true) }}
+                {{ end }}
+            </div>
+        </section>
+        {{ end }}
+    </div>
+
+</main>
+{{ end }}

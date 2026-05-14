@@ -1,7 +1,7 @@
 baseURL = 'https://moonlab.iiserb.ac.in/'
 defaultContentLanguage = 'en'
 title = 'Multi Robot Autonomy Lab @ IISER Bhopal'
-disableKinds = ["taxonomy", "term"]
+disableKinds = ["category"]
 
 
 

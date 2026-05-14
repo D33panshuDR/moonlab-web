@@ -1,5 +1,5 @@
 {{ define "main" }}
-{{ $hasSidebar := or .Params.resources .Params.authors .Params.keywords }}
+{{ $hasSidebar := or .Params.resources .Params.authors .Params.keywords .Params.tags }}
 
 <main class="max-w-7xl mx-auto px-6 pt-32 pb-24">
     <div class="grid grid-cols-1 {{ if $hasSidebar }}lg:grid-cols-12{{ end }} gap-16">
@@ -16,7 +16,16 @@
 
             {{/* 2. Main Content */}}
             <article class="reveal prose prose-lg prose-slate max-w-none text-lab-muted font-light prose-headings:font-title prose-headings:text-lab-text prose-strong:text-lab-text prose-a:text-lab-accent prose-img:rounded-2xl">
-                <h1 class="font-title text-4xl md:text-5xl text-lab-text mb-8 not-prose">{{ .Title }}</h1>
+                <h1 class="font-title text-4xl md:text-5xl text-lab-text mb-4 not-prose">{{ .Title }}</h1>
+                
+                {{ with .Params.tags }}
+                <div class="flex flex-wrap gap-2 mb-8 not-prose">
+                    {{ range . }}
+                    <a href="{{ "/tags/" | relLangURL }}{{ . | urlize }}/" class="px-3 py-1.5 rounded-full bg-slate-100 border border-slate-200 text-[11px] font-bold text-lab-text hover:bg-lab-accent hover:border-lab-accent hover:text-white transition-all duration-300 tracking-wider uppercase">{{ . }}</a>
+                    {{ end }}
+                </div>
+                {{ end }}
+
                 {{ .Content }}
             </article>
 

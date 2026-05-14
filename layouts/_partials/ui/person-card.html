@@ -1,4 +1,16 @@
-{{ $is_leadership := eq .Params.group "faculty" }}
+{{ $page := . }}
+{{ $compact := false }}
+{{ if reflect.IsMap . }}
+    {{ if .Page }}
+        {{ $page = .Page }}
+    {{ end }}
+    {{ if .compact }}
+        {{ $compact = true }}
+    {{ end }}
+{{ end }}
+
+{{ with $page }}
+{{ $is_leadership := and (eq .Params.group "faculty") (not $compact) }}
 
 {{ if $is_leadership }}
 <div class="reveal bg-white rounded-2xl overflow-hidden border border-slate-100 shadow-sm p-6 md:p-12 flex flex-col md:flex-row gap-8 md:gap-12 items-center md:items-start group hover:shadow-md transition-all duration-300">
@@ -124,4 +136,5 @@
         </div>
     </div>
 </div>
+{{ end }}
 {{ end }}
