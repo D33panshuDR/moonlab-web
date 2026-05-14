@@ -1,5 +1,10 @@
 ---
 title: "Human-Robot Interaction & Simulation"
+tagline: "05 — Human-Robot Interaction"
+featured: true
+image: "https://images.unsplash.com/photo-1593508512255-86ab42a8e620?auto=format&fit=crop&w=800&q=80"
+summary: "Explores how humans interface with, teach, and control complex robotic systems using immersive technologies, HITL learning, and mixed reality."
+weight: 50
 ---
 
 Explores how humans interface with, teach, and control complex robotic systems using immersive technologies.

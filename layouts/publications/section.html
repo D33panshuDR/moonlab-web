@@ -4,7 +4,7 @@
 
     <div class="space-y-12">
         {{ $years := slice }}
-        {{ range $k, $v := site.Data.publications }}
+        {{ range $k, $v := hugo.Data.publications }}
             {{ if ne $k "older" }}
                 {{ $years = $years | append $k }}
             {{ end }}
@@ -12,7 +12,7 @@
         
         {{ range sort $years "value" "desc" }}
             {{ $year := . }}
-            {{ $data := index site.Data.publications $year }}
+            {{ $data := index hugo.Data.publications $year }}
             <section class="reveal">
                 <h2 class="text-3xl font-bold mb-6 text-lab-accent border-b border-lab-border pb-2">{{ $year }}</h2>
                 <ul class="space-y-4">

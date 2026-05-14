@@ -90,6 +90,11 @@ collections:
     create: true
     fields:
       - {label: "Title", name: "title", widget: "string"}
+      - {label: "Tagline", name: "tagline", widget: "string", required: false}
+      - {label: "Featured", name: "featured", widget: "boolean", default: false}
+      - {label: "Image", name: "image", widget: "image", required: false}
+      - {label: "Summary", name: "summary", widget: "text", required: false}
+      - {label: "Weight", name: "weight", widget: "number", default: 100}
       - {label: "Body", name: "body", widget: "markdown"}
 
   - name: "people"

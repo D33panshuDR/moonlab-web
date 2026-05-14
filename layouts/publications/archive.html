@@ -9,7 +9,7 @@
     <div class="space-y-12">
         <section>
             <ul class="space-y-4">
-                {{ range site.Data.publications.older.items }}
+                {{ range hugo.Data.publications.older.items }}
                 <li class="reveal flex flex-col md:flex-row gap-4 mb-4 items-start">
                     <span class="text-lab-muted font-mono text-xs uppercase tracking-wider shrink-0 md:w-32 pt-1">{{ .category }}</span>
                     <div class="flex-1">

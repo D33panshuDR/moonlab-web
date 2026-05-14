@@ -16,16 +16,11 @@
 
            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 
-                {{ $research := slice 
-                    (dict "link" "/research/swarm-intelligence/" "img" "https://images.unsplash.com/photo-1508614589041-895b88991e3e?auto=format&fit=crop&w=800&q=80" "tagline" "01 — Swarm Intelligence" "title" "Multi-Robot Systems" "desc" "Focuses on the coordination and decision-making of distributed robotic teams, including cooperative control, swarm navigation, and pursuit-evasion games." "delay" 0)
-                    (dict "link" "/research/field-robotics/" "img" "https://images.unsplash.com/photo-1527443154391-507e9dc6c5cc?auto=format&fit=crop&w=800&q=80" "tagline" "02 — Field Robotics" "title" "Autonomous Systems" "desc" "Encompasses the design, control, and real-world implementation of robots across diverse domains, including aerial (UAVs), marine, and off-road navigation." "delay" 100)
-                    (dict "link" "/research/perception-and-vision/" "img" "https://images.unsplash.com/photo-1507146153580-69a1fe6d8aa1?auto=format&fit=crop&w=800&q=80" "tagline" "03 — Embodied AI" "title" "Perception & Vision" "desc" "Bridges the gap between raw sensor data and high-level reasoning using computer vision, multimodal deep learning, foundation models, and reinforcement learning." "delay" 200)
-                    (dict "link" "/research/advanced-control/" "img" "https://images.unsplash.com/photo-1581092334651-ddf26d9a09d0?auto=format&fit=crop&w=800&q=80" "tagline" "04 — Advanced Control" "title" "Dynamics & Planning" "desc" "Develops the mathematical and algorithmic foundations for safe, efficient, and optimized robotic movement using model-predictive and neuroadaptive control." "delay" 300)
-                    (dict "link" "/research/human-robot-interaction/" "img" "https://images.unsplash.com/photo-1593508512255-86ab42a8e620?auto=format&fit=crop&w=800&q=80" "tagline" "05 — Human-Robot Interaction" "title" "Simulation & Teaming" "desc" "Explores how humans interface with, teach, and control complex robotic systems using immersive technologies, HITL learning, and mixed reality." "delay" 400)
-                }}
+                {{ $featured_research := where (where site.RegularPages "Type" "research") "Params.featured" true }}
+                {{ $sorted_research := sort $featured_research "Params.weight" "asc" }}
                 
-                {{ range $research }}
-                    {{ partial "ui/research-card.html" . }}
+                {{ range $index, $page := $sorted_research }}
+                    {{ partial "ui/research-card.html" (dict "Page" $page "delay" (mul $index 100)) }}
                 {{ end }}
 
             </div>

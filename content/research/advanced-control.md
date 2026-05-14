@@ -1,5 +1,10 @@
 ---
 title: "Advanced Control & Planning"
+tagline: "04 — Advanced Control"
+featured: false
+image: "https://images.unsplash.com/photo-1581092334651-ddf26d9a09d0?auto=format&fit=crop&w=800&q=80"
+summary: "Develops the mathematical and algorithmic foundations for safe, efficient, and optimized robotic movement using model-predictive and neuroadaptive control."
+weight: 40
 ---
 
 Develops the mathematical and algorithmic foundations for safe, efficient, and optimized robotic movement.
