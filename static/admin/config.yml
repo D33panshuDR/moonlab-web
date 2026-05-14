@@ -14,6 +14,11 @@ backend:
 
 
 
+app_title: "Moonlab Admin Panel"
+logo:
+  src: "/logo/moonlab.webp"
+  show_in_header: true
+
 media_folder: "static/images"
 public_folder: "/images"
 
@@ -21,6 +26,8 @@ singletons:
   - name: "home"
     label: "Home Page Settings"
     file: "data/home.yaml"
+    media_folder: "{{media_folder}}/home"
+    public_folder: "{{public_folder}}/home"
     fields:
       - {label: "Header", name: "header", widget: "object", fields: [{label: "Tagline", name: "tagline", widget: "string"}, {label: "Heading", name: "heading", widget: "object", fields: [{label: "Line 1", name: "line1", widget: "string"}, {label: "Line 2", name: "line2", widget: "string"}]}, {label: "Description", name: "description", widget: "text"}, {label: "Buttons", name: "buttons", widget: "object", fields: [{label: "Primary", name: "primary", widget: "object", fields: [{label: "Text", name: "text", widget: "string"}, {label: "URL", name: "url", widget: "string"}]}, {label: "Secondary", name: "secondary", widget: "object", fields: [{label: "Text", name: "text", widget: "string"}, {label: "URL", name: "url", widget: "string"}]}]}, {label: "Image", name: "image", widget: "object", fields: [{label: "Source", name: "src", widget: "string"}, {label: "Alt", name: "alt", widget: "string"}]}]}
   - name: "footer"
@@ -39,6 +46,8 @@ singletons:
   - name: "facilities"
     label: "Facilities & Equipment"
     file: "data/facilities.yaml"
+    media_folder: "{{media_folder}}/facilities"
+    public_folder: "{{public_folder}}/facilities"
     fields:
       - label: "Categories"
         name: "categories"
@@ -62,6 +71,8 @@ singletons:
   - name: "gallery"
     label: "Image Gallery"
     file: "data/gallery.yaml"
+    media_folder: "{{media_folder}}/gallery"
+    public_folder: "{{public_folder}}/gallery"
     fields:
       - label: "Images"
         name: "images"
@@ -76,6 +87,8 @@ collections:
   - name: "news"
     label: "News"
     folder: "content/news"
+    media_folder: "{{media_folder}}/news"
+    public_folder: "{{public_folder}}/news"
     create: true
     slug: "{{slug}}"
     fields:
@@ -87,6 +100,8 @@ collections:
   - name: "research"
     label: "Research Areas"
     folder: "content/research"
+    media_folder: "{{media_folder}}/research"
+    public_folder: "{{public_folder}}/research"
     create: true
     fields:
       - {label: "Title", name: "title", widget: "string"}
@@ -101,6 +116,8 @@ collections:
   - name: "people"
     label: "People"
     folder: "content/people"
+    media_folder: "{{media_folder}}/people"
+    public_folder: "{{public_folder}}/people"
     create: true
     fields:
       - {label: "Title (Name)", name: "title", widget: "string"}
