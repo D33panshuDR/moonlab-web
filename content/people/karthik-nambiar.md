@@ -11,9 +11,12 @@ interests:
   - Deep Learning
   - Unmanned Ground Vehicles
 contact:
-  email: ''
+  email: karthik23@iiserb.ac.in
   github: www.github.com/karthiknambiar29
   linkedin: ''
-  scholar: ''
+  scholar: https://scholar.google.com/citations?user=MnUZHg8AAAAJ&hl=en
+status:
+  available: true
+  text: ''
 papers: []
 ---
