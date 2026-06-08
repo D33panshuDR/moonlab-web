@@ -18,7 +18,7 @@ items:
     link: https://doi.org/10.23919/acc63710.2025.11107556
     category: Conferences
   - title: 'AnyTraverse: An off-road traversability framework with VLM and human operator in the loop'
-    authors: Sattwik Sahu, **Agamdeep Singh**, **Karthik Nambiar**, Srikanth Saripalli, and **P.B. Sujit**
+    authors: '**Sattwik Sahu**, **Agamdeep Singh**, **Karthik Nambiar**, Srikanth Saripalli, and **P.B. Sujit**'
     venue: CoRR abs/2506.16826
     details: '2025.'
     link: https://doi.org/10.36227/techrxiv.176403116.63200932/v1
@@ -35,9 +35,3 @@ items:
     details: '2025.'
     link: https://doi.org/10.1109/etaav66793.2025.11213328
     category: Conferences
-  - title: A Search-Based Collision Avoidance Strategy with COLREGs for Autonomous Surface Vehicles
-    authors: KK Jaiswal, MS Khan, RV Kulkarni, PB Sujit
-    venue: 2025 IEEE International Symposium on Multi-Robot and Multi-Agent Systems (MRS)
-    details: ''
-    link: https://ieeexplore.ieee.org/abstract/document/11357265/
-    category: Conference
