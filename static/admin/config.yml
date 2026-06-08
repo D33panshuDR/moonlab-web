@@ -98,7 +98,7 @@ collections:
       - {label: "Body", name: "body", widget: "markdown"}
 
   - name: "research"
-    label: "Research Areas"
+    label: "Research Works"
     folder: "content/research"
     media_folder: "{{media_folder}}/research"
     public_folder: "{{public_folder}}/research"
