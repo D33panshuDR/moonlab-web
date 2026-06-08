@@ -166,6 +166,28 @@
             </section>
             {{ end }}
 
+            {{/* Selected Projects Section */}}
+            {{ with .Params.selected_projects }}
+            <section>
+                <div class="flex justify-between items-end mb-6 mt-12">
+                    <h3 class="font-title text-3xl font-bold">Selected Projects</h3>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    {{ range . }}
+                    <a href="{{ .link }}" class="group block p-5 rounded-xl border border-lab-border bg-white hover:border-lab-accent hover:shadow-md transition-all duration-300">
+                        <div class="flex justify-between items-center">
+                            <h4 class="font-bold text-lg text-lab-text group-hover:text-lab-accent transition-colors">
+                                {{ .title }}
+                            </h4>
+                            <svg class="w-5 h-5 text-lab-muted group-hover:text-lab-accent transform group-hover:translate-x-1 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                        </div>
+                    </a>
+                    {{ end }}
+                </div>
+            </section>
+            {{ end }}
+
             <!-- {{/* Teaching & Service Grid */}}
             {{ if or .Params.teaching .Params.service }}
             <section class="grid grid-cols-1 md:grid-cols-2 gap-8 pt-8">

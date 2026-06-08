@@ -40,4 +40,7 @@ tags:
   - multimodal-models
   - world-models
   - self-supervised-learning
+selected_projects:
+  - title: 'AnyTraverse: VLM-Based Traversability Framework with Human-in-the-Loop'
+    link: '/research/anytraverse-vlm-based-traversability-framework-with-human-in-the-loop/'
 ---
