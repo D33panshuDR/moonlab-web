@@ -18,4 +18,21 @@ contact:
   linkedin: https://www.linkedin.com/in/sattwik-kumar-sahu-19b685268
   scholar: https://scholar.google.com/citations?user=nMh7tO8AAAAJ
 status: null
+papers:
+  - title: 'AnyTraverse: An off-road traversability framework with VLM and human operator in the loop'
+    authors: |-
+      **Sattwik Sahu**
+
+      Agamdeep Singh
+
+      Karthik Nambiar
+
+      Srikanth Saripalli
+
+      Sujit P B
+    venue: International Symposium on Experimental Robotics
+    venue_style: muted
+    links:
+      pdf: https://arxiv.org/pdf/2506.16826v1
+      code: https://github.com/sattwik-sahu/AnyTraverse
 ---
