@@ -12,6 +12,7 @@ title = 'Multi Robot Autonomy Lab @ IISER Bhopal'
   description = 'Multi Robot Autonomy Lab @ IISER Bhopal'
   googleAnalyticsID = 'G-4391MGD2MB'
   logo = 'logo/moonlab.webp'
+  contactFormAction = '#'
   google_fonts = [
     "Inter:wght@300;400;500;600",
     "Manrope:wght@400;500;700;800"

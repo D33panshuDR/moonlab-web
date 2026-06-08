@@ -43,7 +43,7 @@
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                 {{ range $index, $element := first 3 (where site.RegularPages "Type" "news") }}
                 <div class="bg-white p-8 rounded-xl shadow-sm border border-slate-100 hover:shadow-md transition-all duration-300 reveal group" {{ if gt $index 0 }}style="transition-delay: {{ mul $index 100 }}ms;"{{ end }}>
-                    <time class="text-xs text-lab-muted font-mono mb-4 block">{{ .Date.Format "JAN 02, 2006" }}</time>
+                    <time class="text-xs text-lab-muted font-mono mb-4 block">{{ .Date.Format "January 2, 2006" }}</time>
                     <h4 class="font-bold text-lg mb-3 leading-snug group-hover:text-lab-accent transition-colors"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h4>
                     <p class="text-sm text-lab-muted leading-relaxed">
                         {{ .Summary }}

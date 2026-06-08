@@ -61,7 +61,7 @@
             <div class="lg:col-span-7 bg-white p-8 md:p-12 border border-lab-border reveal" style="transition-delay: 100ms;">
                 <h3 class="font-title text-2xl mb-6 border-b border-lab-border pb-2">Send a Message</h3>
                 
-                <form class="space-y-6" action="#" method="POST">
+                <form class="space-y-6" action="{{ site.Params.contactFormAction | default "#" }}" method="POST">
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div>
                             <label for="fname" class="block text-[10px] font-bold text-lab-muted uppercase tracking-widest mb-2">First Name</label>
@@ -106,39 +106,55 @@
         <div class="mt-20 grid grid-cols-1 md:grid-cols-2 gap-8 reveal">
             
             {{/* 1. LEFT COLUMN: Map */}}
-            <div class="w-full h-[600px] bg-gray-200 relative overflow-hidden group border border-lab-border">
-               
+            <div class="w-full h-[600px] bg-gray-200 relative overflow-hidden group border border-lab-border z-0" id="contact-map">
+                {{/* Leaflet Assets loaded inside container for local scope */}}
+                <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+                <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+                
                 {{ $lat := .Params.map.coordinates.lat }}
                 {{ $lng := .Params.map.coordinates.lng }}
-                {{ $offset := .Params.map.zoom_offset | default 0.004 }}
-                
-                {{ $minLon := sub $lng $offset }}
-                {{ $minLat := sub $lat $offset }}
-                {{ $maxLon := add $lng $offset }}
-                {{ $maxLat := add $lat $offset }}
-                
-                {{ $src := printf "https://www.openstreetmap.org/export/embed.html?bbox=%f,%f,%f,%f&layer=mapnik&marker=%f,%f" $minLon $minLat $maxLon $maxLat $lat $lng }}
 
-                <iframe 
-                    width="100%" 
-                    height="100%" 
-                    frameborder="0" 
-                    scrolling="no" 
-                    marginheight="0" 
-                    marginwidth="0" 
-                    src="{{ $src | safeURL }}" 
-                    class="w-full h-full transition-all duration-700 ease-in-out z-0"
-                    title="Lab Location"
-                ></iframe>
+                <script>
+                    document.addEventListener('DOMContentLoaded', () => {
+                        const lat = {{ $lat }};
+                        const lng = {{ $lng }};
+                        const label = "{{ .Params.map.label }}";
 
-                <div class="absolute inset-0 flex items-center justify-center pointer-events-none pb-14">
-                    <div class="bg-white px-4 py-2 border border-lab-border shadow-xl z-10 relative">
-                        <span class="text-xs font-bold text-lab-text whitespace-nowrap">
-                            {{ .Params.map.label }}
-                        </span>
-                        <div class="absolute -bottom-2 left-1/2 -translate-x-1/2 w-0 h-0 border-l-[6px] border-l-transparent border-r-[6px] border-r-transparent border-t-8 border-t-white"></div>
-                    </div>
-                </div>
+                        // Initialize Leaflet map centered at coordinates
+                        const map = L.map('contact-map', {
+                            scrollWheelZoom: false,
+                            zoomControl: true
+                        }).setView([lat, lng], 15);
+
+                        // Add OpenStreetMap tile layer
+                        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                            maxZoom: 19,
+                            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                        }).addTo(map);
+
+                        // Create custom div icon where the label is embedded in the marker itself
+                        const customIcon = L.divIcon({
+                            className: 'custom-map-marker',
+                            html: '<div class="relative flex flex-col items-center select-none" style="transform: translate(-50%, -100%);">' +
+                                  '  <!-- Label Box -->' +
+                                  '  <div class="bg-white px-4 py-2 border border-slate-200 shadow-xl rounded-lg mb-2 relative">' +
+                                  '    <span class="text-xs font-bold text-slate-800 whitespace-nowrap block">' + label + '</span>' +
+                                  '    <!-- Down Arrow on Label -->' +
+                                  '    <div class="absolute -bottom-2 left-1/2 -translate-x-1/2 w-0 h-0 border-l-[6px] border-l-transparent border-r-[6px] border-r-transparent border-t-8 border-t-white"></div>' +
+                                  '  </div>' +
+                                  '  <!-- Marker Pin -->' +
+                                  '  <div class="relative flex items-center justify-center">' +
+                                  '    <div class="absolute w-8 h-8 rounded-full bg-blue-500/30 animate-ping"></div>' +
+                                  '    <div class="w-4.5 h-4.5 bg-blue-600 rounded-full border-2 border-white shadow-lg relative z-10"></div>' +
+                                  '  </div>' +
+                                  '</div>',
+                            iconSize: [0, 0]
+                        });
+
+                        // Add Marker with custom icon
+                        L.marker([lat, lng], { icon: customIcon }).addTo(map);
+                    });
+                </script>
             </div>
 
             {{/* 2. RIGHT COLUMN: Google Calendar */}}
