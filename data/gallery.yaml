@@ -2,3 +2,6 @@ images:
   - image: /images/gallery/adas26.JPG
     caption: Moonlab's UGV team at ADAS26.
     date: 2026-12-02
+  - image: /images/gallery/usv_experiment.png
+    caption: USV team performing field experiment
+    date: ''
