@@ -8,3 +8,11 @@ images:
   - image: /images/gallery/iitg.jpg
     caption: USV Team's Visit to IIT Guwahati
     date: ''
+  - image: /images/gallery/cuas.jpeg
+    caption: "Moonlab at Joint Seminar on Counter Unmanned Aircraft Systems (CUAS) organised by 3 EME , Indian Army"
+    date: "2026-03-07"
+  - image: /images/gallery/rhino.png
+    caption: "UGV Rhino at field experiment"
+    date: ""
+  
+    
