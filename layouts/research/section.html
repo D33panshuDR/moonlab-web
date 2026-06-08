@@ -1,0 +1,91 @@
+{{ define "main" }}
+<main class="max-w-5xl mx-auto px-6 pt-32 pb-24">
+    
+    <div class="mb-16 reveal">
+        <h1 class="font-title text-4xl md:text-6xl font-bold text-lab-text mb-6">{{ .Title }}</h1>
+        <div class="text-lg text-lab-muted leading-relaxed prose prose-lg max-w-none">
+            {{ .Content }}
+        </div>
+    </div>
+
+    {{ $paginator := .Paginate .RegularPages }}
+    <div class="flex flex-col gap-8">
+        {{ range $index, $page := $paginator.Pages }}
+            {{ $img := $page.Params.image | default "" }}
+            {{ $webp := "" }}
+            {{ if and $img (hasPrefix $img "http") }}
+                {{ with resources.GetRemote $img }}
+                    {{ $webp = (.Resize "800x webp q80").RelPermalink }}
+                {{ end }}
+            {{ else if $img }}
+                {{ $imgPath := strings.TrimPrefix "/" $img }}
+                {{ with resources.Get $imgPath }}
+                    {{ $webp = (.Resize "800x webp q80").RelPermalink }}
+                {{ end }}
+            {{ end }}
+
+            <a href="{{ $page.RelPermalink }}" class="group grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-10 items-center reveal cursor-pointer bg-white rounded-[2rem] p-4 md:p-6 border border-slate-100 shadow-sm hover:shadow-lg transition-all duration-300" style="transition-delay: {{ mul $index 100 }}ms;">
+                <div class="md:col-span-5 aspect-[4/3] rounded-2xl overflow-hidden bg-slate-100 relative">
+                    {{ if $img }}
+                    <img src="{{ $webp | default $img }}" loading="lazy" alt="{{ $page.Title }}" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                    {{ else }}
+                    <div class="w-full h-full flex items-center justify-center bg-slate-50 text-slate-300">
+                        <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                    </div>
+                    {{ end }}
+                    <div class="absolute inset-0 bg-black/5 group-hover:bg-transparent transition-colors duration-500"></div>
+                </div>
+                <div class="md:col-span-7 flex flex-col justify-center pr-4">
+                    <span class="text-xs font-bold text-lab-accent uppercase tracking-widest mb-2">
+                        {{ printf "%02d" (add (mul (sub $paginator.PageNumber 1) $paginator.PagerSize) (add $index 1)) }} — {{ with $page.Params.tags }}{{ index . 0 }}{{ else }}Research{{ end }}
+                    </span>
+                    <h2 class="font-title text-2xl md:text-3xl font-bold mb-3 text-lab-text group-hover:text-lab-accent transition-colors">{{ $page.Title }}</h2>
+                    <p class="text-sm md:text-base text-lab-muted leading-relaxed mb-6 line-clamp-3">
+                        {{ $page.Params.summary | default $page.Summary }}
+                    </p>
+                    <span class="text-sm font-bold text-lab-text group-hover:text-lab-accent flex items-center gap-2 transition-colors">
+                        Explore Project <span class="group-hover:translate-x-1 transition-transform">→</span>
+                    </span>
+                </div>
+            </a>
+        {{ end }}
+    </div>
+
+    {{/* Pagination Controls */}}
+    {{ if gt $paginator.TotalPages 1 }}
+    <nav class="flex justify-center items-center gap-2 mt-16 reveal" aria-label="Pagination">
+        {{ if $paginator.HasPrev }}
+        <a href="{{ $paginator.Prev.URL }}" class="flex items-center justify-center w-10 h-10 rounded-full border border-slate-200 text-lab-text hover:border-lab-accent hover:text-lab-accent transition-all duration-300" aria-label="Previous Page">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+        </a>
+        {{ else }}
+        <span class="flex items-center justify-center w-10 h-10 rounded-full border border-slate-100 text-slate-300 cursor-not-allowed" aria-disabled="true">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+        </span>
+        {{ end }}
+
+        {{ range $paginator.Pagers }}
+        {{ if eq .PageNumber $paginator.PageNumber }}
+        <span class="flex items-center justify-center w-10 h-10 rounded-full bg-lab-accent text-white font-bold text-sm" aria-current="page">
+            {{ .PageNumber }}
+        </span>
+        {{ else }}
+        <a href="{{ .URL }}" class="flex items-center justify-center w-10 h-10 rounded-full border border-slate-200 text-lab-text hover:border-lab-accent hover:text-lab-accent font-bold text-sm transition-all duration-300">
+            {{ .PageNumber }}
+        </a>
+        {{ end }}
+        {{ end }}
+
+        {{ if $paginator.HasNext }}
+        <a href="{{ $paginator.Next.URL }}" class="flex items-center justify-center w-10 h-10 rounded-full border border-slate-200 text-lab-text hover:border-lab-accent hover:text-lab-accent transition-all duration-300" aria-label="Next Page">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+        </a>
+        {{ else }}
+        <span class="flex items-center justify-center w-10 h-10 rounded-full border border-slate-100 text-slate-300 cursor-not-allowed" aria-disabled="true">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+        </span>
+        {{ end }}
+    </nav>
+    {{ end }}
+</main>
+{{ end }}

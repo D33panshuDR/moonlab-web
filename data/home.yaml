@@ -10,11 +10,7 @@ header:
   buttons:
     primary:
       text: "Our Research"
-      url: "#research"
+      url: "/research"
     secondary:
       text: "Recent Publications"
       url: "/publications/"
-      
-  image:
-    src: "https://picsum.photos/seed/moonlab_hero/1920/1080" 
-    alt: "Autonomous Drone Swarm"
