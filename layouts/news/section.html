@@ -5,16 +5,54 @@
         <p class="text-lab-muted">Stay updated with research, grants, and events from Moonlab.</p>
     </div>
     
+    {{ $paginator := .Paginate .RegularPages }}
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        {{ range .RegularPages }}
-        <div class="bg-white p-8 rounded-xl shadow-sm border border-slate-100 hover:shadow-md transition-all duration-300 reveal group">
-            <time class="text-xs text-lab-muted font-mono mb-4 block">{{ .Date.Format "JAN 02, 2006" }}</time>
-            <h4 class="font-bold text-lg mb-3 leading-snug group-hover:text-lab-accent transition-colors"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h4>
+        {{ range $index, $page := $paginator.Pages }}
+        <div class="bg-white p-8 rounded-xl shadow-sm border border-slate-100 hover:shadow-md transition-all duration-300 reveal group" style="transition-delay: {{ mul $index 100 }}ms;">
+            <time class="text-xs text-lab-muted font-mono mb-4 block">{{ $page.Date.Format "JAN 02, 2006" }}</time>
+            <h4 class="font-bold text-lg mb-3 leading-snug group-hover:text-lab-accent transition-colors"><a href="{{ $page.RelPermalink }}">{{ $page.Title }}</a></h4>
             <p class="text-sm text-lab-muted leading-relaxed">
-                {{ .Summary }}
+                {{ $page.Summary }}
             </p>
         </div>
         {{ end }}
     </div>
+
+    {{/* Pagination Controls */}}
+    {{ if gt $paginator.TotalPages 1 }}
+    <nav class="flex justify-center items-center gap-2 mt-16 reveal" aria-label="Pagination">
+        {{ if $paginator.HasPrev }}
+        <a href="{{ $paginator.Prev.URL }}" class="flex items-center justify-center w-10 h-10 rounded-full border border-slate-200 text-lab-text hover:border-lab-accent hover:text-lab-accent transition-all duration-300" aria-label="Previous Page">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+        </a>
+        {{ else }}
+        <span class="flex items-center justify-center w-10 h-10 rounded-full border border-slate-100 text-slate-300 cursor-not-allowed" aria-disabled="true">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+        </span>
+        {{ end }}
+
+        {{ range $paginator.Pagers }}
+        {{ if eq .PageNumber $paginator.PageNumber }}
+        <span class="flex items-center justify-center w-10 h-10 rounded-full bg-lab-accent text-white font-bold text-sm" aria-current="page">
+            {{ .PageNumber }}
+        </span>
+        {{ else }}
+        <a href="{{ .URL }}" class="flex items-center justify-center w-10 h-10 rounded-full border border-slate-200 text-lab-text hover:border-lab-accent hover:text-lab-accent font-bold text-sm transition-all duration-300">
+            {{ .PageNumber }}
+        </a>
+        {{ end }}
+        {{ end }}
+
+        {{ if $paginator.HasNext }}
+        <a href="{{ $paginator.Next.URL }}" class="flex items-center justify-center w-10 h-10 rounded-full border border-slate-200 text-lab-text hover:border-lab-accent hover:text-lab-accent transition-all duration-300" aria-label="Next Page">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+        </a>
+        {{ else }}
+        <span class="flex items-center justify-center w-10 h-10 rounded-full border border-slate-100 text-slate-300 cursor-not-allowed" aria-disabled="true">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+        </span>
+        {{ end }}
+    </nav>
+    {{ end }}
 </main>
 {{ end }}
