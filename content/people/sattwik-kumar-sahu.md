@@ -35,4 +35,9 @@ papers:
     links:
       pdf: https://arxiv.org/pdf/2506.16826v1
       code: https://github.com/sattwik-sahu/AnyTraverse
+tags:
+  - offroad-navigation
+  - multimodal-models
+  - world-models
+  - self-supervised-learning
 ---
