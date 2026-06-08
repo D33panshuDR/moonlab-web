@@ -3,7 +3,7 @@ defaultContentLanguage = 'en'
 title = 'Multi Robot Autonomy Lab @ IISER Bhopal'
 
 [pagination]
-  pagerSize = 1
+  pagerSize = 10
 
 
 
