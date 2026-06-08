@@ -11,7 +11,7 @@ categories:
             value: 75 kg
           - label: Weight
             value: 50 kg
-      - title: Unitree Go2
+      - title: Unitree Go1
         description: An advanced quadruped robot for dynamic locomotion and embodied AI research.
         specs:
           - label: Max Speed
