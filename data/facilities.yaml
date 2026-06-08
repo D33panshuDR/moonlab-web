@@ -34,6 +34,10 @@ categories:
   - name: Unmanned Surface Vehicles (USV)
     facilities:
       - title: Minions
-        description: Small USVs
+        description: Small research platform for marine robotics
+        image: /images/facilities/minions.jpg
+        specs: []
+      - title: AquaRP
+        description: Research platform for marine robotics
         image: ''
         specs: []
