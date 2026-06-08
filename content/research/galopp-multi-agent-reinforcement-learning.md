@@ -16,6 +16,6 @@ Determining multi-robot motion policies for persistently monitoring a region wit
 
 **Authors:** Manav Mishra, Prithvi Poddar, Rajat Agrawal, Jingxi Chen, Pratap Tokekar, and P.B. Sujit
 
-## Video Demonstration
+
 
 

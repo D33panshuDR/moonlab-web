@@ -1,132 +1,140 @@
 {{ define "main" }}
-{{ $hasSidebar := or .Params.resources .Params.authors .Params.keywords .Params.tags }}
+{{ $hasSidebar := or .Params.resources .Params.authors .Params.keywords }}
 
-<main class="max-w-7xl mx-auto px-6 pt-32 pb-24">
-    <div class="grid grid-cols-1 {{ if $hasSidebar }}lg:grid-cols-12{{ end }} gap-16">
+<main class="pt-32 pb-24">
+    {{/* --- HEADER SECTION --- */}}
+    <div class="max-w-5xl mx-auto px-6 mb-16 text-center reveal">
+        {{ with .Params.tagline }}
+        <span class="inline-block text-lab-accent font-bold tracking-widest text-xs uppercase mb-6 px-4 py-1.5 rounded-full bg-blue-50 border border-blue-100">{{ . }}</span>
+        {{ end }}
         
-        {{/* --- LEFT COLUMN: CONTENT --- */}}
-        <div class="{{ if $hasSidebar }}lg:col-span-8{{ else }}lg:col-span-12 max-w-4xl mx-auto w-full{{ end }} space-y-12">
-            
-            {{/* 1. Cover Image (Only renders if an image is provided in the markdown) */}}
-            {{ with .Params.cover_image }}
-            <div class="w-full h-[300px] md:h-[450px] overflow-hidden rounded-3xl bg-slate-100 reveal shadow-sm">
-                <img src="{{ . | relURL }}" alt="Research Cover" class="w-full h-full object-cover">
-            </div>
+        <h1 class="font-title text-4xl md:text-5xl lg:text-6xl text-lab-text mb-8 leading-tight">{{ .Title }}</h1>
+        
+        {{ with .Params.tags }}
+        <div class="flex flex-wrap justify-center gap-3">
+            {{ range . }}
+            <a href="{{ "/tags/" | relLangURL }}{{ . | urlize }}/" class="px-5 py-2 rounded-full bg-white border border-slate-200 text-[11px] font-bold text-slate-600 hover:bg-lab-accent hover:border-lab-accent hover:text-white transition-all duration-300 tracking-widest uppercase shadow-sm">{{ . }}</a>
             {{ end }}
+        </div>
+        {{ end }}
+    </div>
 
-            {{/* 2. Main Content */}}
-            <article class="reveal prose prose-lg prose-slate max-w-none text-lab-muted font-light prose-headings:font-title prose-headings:text-lab-text prose-strong:text-lab-text prose-a:text-lab-accent prose-img:rounded-2xl">
-                <h1 class="font-title text-4xl md:text-5xl text-lab-text mb-4 not-prose">{{ .Title }}</h1>
+    <div class="max-w-7xl mx-auto px-6">
+        
+        {{/* --- COVER IMAGE --- */}}
+        {{ with .Params.cover_image }}
+        <div class="w-full h-[400px] md:h-[500px] lg:h-[600px] overflow-hidden rounded-[2rem] bg-slate-100 reveal shadow-xl mb-16 relative">
+            <img src="{{ . | relURL }}" alt="{{ $.Title }}" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+        </div>
+        {{ end }}
+
+        <div class="grid grid-cols-1 {{ if $hasSidebar }}lg:grid-cols-12{{ end }} gap-16">
+            
+            {{/* --- LEFT COLUMN: CONTENT --- */}}
+            <div class="{{ if $hasSidebar }}lg:col-span-8{{ else }}lg:col-span-12 max-w-4xl mx-auto w-full{{ end }}">
+                <article class="reveal prose prose-lg prose-slate max-w-none text-slate-600 font-light leading-relaxed prose-headings:font-title prose-headings:text-lab-text prose-h2:text-3xl prose-h3:text-2xl prose-strong:text-lab-text prose-a:text-lab-accent prose-a:no-underline hover:prose-a:underline prose-img:rounded-[2rem] prose-img:shadow-lg prose-video:rounded-[2rem] prose-video:shadow-lg prose-iframe:rounded-2xl prose-iframe:shadow-lg">
+                    {{ .Content }}
+                </article>
+            </div>
+
+            {{/* --- RIGHT COLUMN: SIDEBAR --- */}}
+            {{ if $hasSidebar }}
+            <aside class="lg:col-span-4 space-y-10">
                 
-                {{ with .Params.tags }}
-                <div class="flex flex-wrap gap-2 mb-8 not-prose">
-                    {{ range . }}
-                    <a href="{{ "/tags/" | relLangURL }}{{ . | urlize }}/" class="px-3 py-1.5 rounded-full bg-slate-100 border border-slate-200 text-[11px] font-bold text-lab-text hover:bg-lab-accent hover:border-lab-accent hover:text-white transition-all duration-300 tracking-wider uppercase">{{ . }}</a>
-                    {{ end }}
+                {{/* 1. Resources Box */}}
+                {{ with .Params.resources }}
+                <div class="bg-white p-8 rounded-[2rem] border border-slate-100 shadow-md sticky top-32 reveal z-20">
+                    <h3 class="font-title text-xl mb-6 flex items-center gap-3 text-lab-text border-b border-slate-100 pb-4">
+                        <svg class="w-5 h-5 text-lab-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+                        Resources
+                    </h3>
+                    
+                    <ul class="space-y-4">
+                        {{ range . }}
+                        <li>
+                            <a href="{{ .url }}" target="_blank" class="group flex justify-between items-center text-sm pb-4 border-b border-slate-50 hover:text-lab-accent transition-colors">
+                                <span class="font-bold">{{ .name }}</span>
+                                
+                                {{/* Icon Logic */}}
+                                {{ if eq .icon "github" }}
+                                    <svg class="w-5 h-5 text-lab-muted group-hover:text-lab-accent transition-colors" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd"/></svg>
+                                {{ else }}
+                                    <svg class="w-5 h-5 text-lab-muted group-hover:text-lab-accent transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                                {{ end }}
+                            </a>
+                        </li>
+                        {{ end }}
+                    </ul>
                 </div>
                 {{ end }}
 
-                {{ .Content }}
-            </article>
-
-        </div>
-
-        {{/* --- RIGHT COLUMN: SIDEBAR --- */}}
-        {{ if $hasSidebar }}
-        <aside class="lg:col-span-4 space-y-12">
-            
-            {{/* 1. Resources Box */}}
-            {{ with .Params.resources }}
-            <div class="bg-white p-8 rounded-2xl border border-slate-100 shadow-sm sticky top-32 reveal z-20">
-                <h3 class="font-title text-xl mb-6 flex items-center gap-2 text-lab-text">
-                    <svg class="w-5 h-5 text-lab-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
-                    Resources
-                </h3>
-                
-                <ul class="space-y-4">
-                    {{ range . }}
-                    <li>
-                        <a href="{{ .url }}" target="_blank" class="group flex justify-between items-center text-sm pb-3 border-b border-slate-100 hover:text-lab-accent transition-colors">
-                            <span class="font-bold">{{ .name }}</span>
+                {{/* 2. Research Team (Only renders if authors exist) */}}
+                {{ with .Params.authors }}
+                <div class="bg-white p-8 rounded-[2rem] border border-slate-100 shadow-md reveal">
+                    <h3 class="font-title text-xl mb-6 text-lab-text border-b border-slate-100 pb-4">Research Team</h3>
+                    <div class="space-y-6">
+                        {{ range . }}
+                            {{ $authorPage := site.GetPage (printf "people/%s" .) }}
                             
-                            {{/* Icon Logic */}}
-                            {{ if eq .icon "github" }}
-                                <svg class="w-4 h-4 text-lab-muted group-hover:text-lab-accent transition-colors" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd"/></svg>
-                            {{ else }}
-                                <svg class="w-4 h-4 text-lab-muted group-hover:text-lab-accent transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                            {{ with $authorPage }}
+                            <a href="{{ .RelPermalink }}" class="flex items-center gap-4 group">
+                                {{ with .Params.profile_image }}
+                                <img src="{{ . | relURL }}" class="w-14 h-14 rounded-full grayscale object-cover group-hover:grayscale-0 transition-all duration-300 shadow-sm border-2 border-transparent group-hover:border-lab-accent">
+                                {{ else }}
+                                <div class="w-14 h-14 rounded-full bg-slate-100 border border-slate-200 flex items-center justify-center text-slate-400 font-bold text-xl group-hover:border-lab-accent group-hover:text-lab-accent transition-all duration-300">?</div>
+                                {{ end }}
+                                
+                                <div>
+                                    <h4 class="text-base font-bold text-lab-text group-hover:text-lab-accent transition-colors">{{ .Title }}</h4>
+                                    <p class="text-[10px] text-lab-muted uppercase tracking-wider mt-1 font-semibold">{{ .Params.role }}</p>
+                                </div>
+                            </a>
                             {{ end }}
-                        </a>
-                    </li>
-                    {{ end }}
-                </ul>
-            </div>
-            {{ end }}
-
-            {{/* 2. Research Team (Only renders if authors exist) */}}
-            {{ with .Params.authors }}
-            <div class="reveal">
-                <h3 class="font-title text-xl mb-6 text-lab-text border-b border-slate-100 pb-2">Research Team</h3>
-                <div class="space-y-6 mt-4">
-                    {{ range . }}
-                        {{ $authorPage := site.GetPage (printf "people/%s" .) }}
-                        
-                        {{ with $authorPage }}
-                        <a href="{{ .RelPermalink }}" class="flex items-center gap-4 group">
-                            {{ with .Params.profile_image }}
-                            <img src="{{ . | relURL }}" class="w-12 h-12 rounded-full grayscale object-cover group-hover:grayscale-0 transition-all duration-300 shadow-sm">
-                            {{ else }}
-                            <div class="w-12 h-12 rounded-full bg-slate-200 flex items-center justify-center text-slate-400 font-bold text-lg">?</div>
-                            {{ end }}
-                            
-                            <div>
-                                <h4 class="text-sm font-bold text-lab-text group-hover:text-lab-accent transition-colors">{{ .Title }}</h4>
-                                <p class="text-[10px] text-lab-muted uppercase tracking-wider mt-0.5">{{ .Params.role }}</p>
-                            </div>
-                        </a>
                         {{ end }}
-                    {{ end }}
+                    </div>
                 </div>
-            </div>
-            {{ end }}
+                {{ end }}
 
-            {{/* 3. Keywords */}}
-            {{ with .Params.keywords }}
-            <div class="reveal mt-8">
-                <h3 class="font-title text-xl mb-4 text-lab-text">Keywords</h3>
-                <div class="flex flex-wrap gap-2">
-                    {{ range . }}
-                    <span class="px-3 py-1.5 rounded-lg bg-slate-50 border border-slate-100 text-[11px] font-bold text-lab-muted tracking-wide">{{ . }}</span>
-                    {{ end }}
+                {{/* 3. Keywords */}}
+                {{ with .Params.keywords }}
+                <div class="bg-white p-8 rounded-[2rem] border border-slate-100 shadow-md reveal">
+                    <h3 class="font-title text-xl mb-6 text-lab-text border-b border-slate-100 pb-4">Keywords</h3>
+                    <div class="flex flex-wrap gap-2">
+                        {{ range . }}
+                        <span class="px-4 py-2 rounded-xl bg-slate-50 border border-slate-100 text-xs font-bold text-slate-600 tracking-wide hover:bg-slate-100 transition-colors">{{ . }}</span>
+                        {{ end }}
+                    </div>
                 </div>
-            </div>
-            {{ end }}
+                {{ end }}
 
-        </aside>
-        {{ end }}
+            </aside>
+            {{ end }}
+        </div>
     </div>
 </main>
 
 {{/* --- FOOTER NAVIGATION (Prev/Next Project) --- */}}
-<section class="border-t border-slate-100 bg-slate-50/30">
+<section class="border-t border-slate-100 bg-slate-50/50 mt-12">
     <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2">
         {{/* Previous Project */}}
         {{ with .PrevInSection }}
-        <a href="{{ .RelPermalink }}" class="group border-b md:border-b-0 md:border-r border-slate-100 p-8 md:p-12 hover:bg-white transition-colors text-left block h-full">
-            <span class="block text-[11px] font-bold text-lab-muted tracking-widest mb-3 group-hover:text-lab-accent transition-colors">PREVIOUS TOPIC</span>
-            <span class="font-title text-2xl md:text-3xl text-lab-text block">{{ .Title }}</span>
+        <a href="{{ .RelPermalink }}" class="group border-b md:border-b-0 md:border-r border-slate-100 p-10 md:p-16 hover:bg-white transition-all duration-300 text-left block h-full">
+            <span class="block text-[11px] font-bold text-lab-muted tracking-widest mb-4 group-hover:text-lab-accent transition-colors">PREVIOUS PROJECT</span>
+            <span class="font-title text-3xl md:text-4xl text-lab-text block">{{ .Title }}</span>
         </a>
         {{ else }}
-        <div class="border-b md:border-b-0 md:border-r border-slate-100 p-8 md:p-12"></div>
+        <div class="border-b md:border-b-0 md:border-r border-slate-100 p-10 md:p-16"></div>
         {{ end }}
 
         {{/* Next Project */}}
         {{ with .NextInSection }}
-        <a href="{{ .RelPermalink }}" class="group p-8 md:p-12 hover:bg-white transition-colors text-left md:text-right block h-full">
-            <span class="block text-[11px] font-bold text-lab-muted tracking-widest mb-3 group-hover:text-lab-accent transition-colors">NEXT TOPIC</span>
-            <span class="font-title text-2xl md:text-3xl text-lab-text block">{{ .Title }}</span>
+        <a href="{{ .RelPermalink }}" class="group p-10 md:p-16 hover:bg-white transition-all duration-300 text-left md:text-right block h-full">
+            <span class="block text-[11px] font-bold text-lab-muted tracking-widest mb-4 group-hover:text-lab-accent transition-colors">NEXT PROJECT</span>
+            <span class="font-title text-3xl md:text-4xl text-lab-text block">{{ .Title }}</span>
         </a>
         {{ else }}
-        <div class="p-8 md:p-12"></div>
+        <div class="p-10 md:p-16"></div>
         {{ end }}
     </div>
 </section>
